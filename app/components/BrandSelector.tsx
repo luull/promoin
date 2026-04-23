@@ -15,10 +15,10 @@ export function BrandSelector({
   };
 
   return (
-    <div className="px-4 md:px-8 mx-auto max-w-6xl  sticky top-0 py-3 z-50  bg-[#f6f7fb]">
+    <div className="px-4 md:px-8 mx-auto max-w-6xl  bg-[#f6f7fb]">
       {/* 🔥 SCROLL CONTAINER */}
       <section className="w-full px-1 py-2 mx-auto overflow-x-auto overflow-y-hidden no-scrollbar">
-        <div className="flex items-center gap-3 md:gap-5 snap-x snap-mandatory">
+        <div className="flex items-center gap-3 md:gap-5 snap-x snap-mandatory ">
           {brands.map((b) => {
             const active = selected === b.id;
 

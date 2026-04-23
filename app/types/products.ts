@@ -38,15 +38,20 @@ export const brands = [
 ];
 
 export interface Product {
-  image: string;
   id: number;
+  product_id: string;
+  image: string;
   name: string;
   category: string;
+  brand: string;
   desc: string;
   price: {
     original: number;
     selling: number;
   };
+  is_active: boolean;
+  has_options: boolean;
+  fields_format: string;
 }
 
-export type BrandKey = "fore" | "kopken" | "tomoro";
+export type BrandKey = "fore" | "kopken" | "tomoro" | "starbuck";

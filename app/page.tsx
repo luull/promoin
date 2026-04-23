@@ -48,7 +48,7 @@ export default function Home() {
             <p className="text-sm text-green-600 font-medium mb-3">NIKMATI</p>
 
             <h1 className="text-5xl font-bold leading-tight">
-              <span className="text-green-600">Hemat 30%</span> untuk Setiap
+              <span className="text-green-600">Hemat 30% ++</span> untuk Setiap
               Pembelian <span className="text-green-600">Kopi.</span>
             </h1>
 
