@@ -160,6 +160,15 @@ export function ProductModal({
 
     return <Coffee size={16} />;
   };
+  useEffect(() => {
+    // disable scroll
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      // balikin scroll pas modal ditutup
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <div
@@ -181,7 +190,7 @@ export function ProductModal({
         </div>
 
         {/* CONTENT */}
-        <div className="flex-1 p-6 relative overflow-y-auto max-h-[90vh]">
+        <div className="flex-1 p-6 relative overflow-y-hide max-h-[90vh]">
           {/* CLOSE */}
           <button
             onClick={handleClose}
@@ -190,108 +199,124 @@ export function ProductModal({
             <X size={20} />
           </button>
 
-          {/* INFO */}
-          <div className="text-sm bg-green-100 py-1 px-3 text-green-600 mt-5 rounded w-fit">
-            {product.category}
-          </div>
+          <div className="flex-1 p-6 flex flex-col max-h-[90vh]">
+            {/* 🔥 HEADER (TIDAK SCROLL) */}
+            <div>
+              {/* INFO */}
+              <div className="text-sm bg-green-100 py-1 px-3 text-green-600 rounded w-fit">
+                {product.category}
+              </div>
 
-          <h2 className="text-xl font-bold mt-2">{product.name}</h2>
+              <h2 className="text-xl font-bold mt-2">{product.name}</h2>
 
-          <p className="text-xs text-gray-400 line-clamp-3">{product.desc}</p>
+              <p className="text-xs text-gray-400 line-clamp-3">
+                {product.desc}
+              </p>
 
-          {/* PRICE */}
-          <div className="mt-2 flex items-center gap-2">
-            <span className="text-green-600 font-bold text-xl">
-              Rp {product.price.selling.toLocaleString("id-ID")}
-            </span>
+              {/* PRICE */}
+              <div className="mt-2 flex items-center gap-2">
+                <span className="text-green-600 font-bold text-xl">
+                  Rp {product.price.selling.toLocaleString("id-ID")}
+                </span>
 
-            {product.price.original > product.price.selling && (
-              <span className="text-gray-400 line-through text-sm">
-                Rp {product.price.original.toLocaleString("id-ID")}
-              </span>
-            )}
-          </div>
-
-          {/* OPTIONS */}
-          <>
-            {options.map((opt) => (
-              <div key={`${opt.id}-${opt.name}`} className="mt-5">
-                <div className="flex justify-between items-center mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="text-gray-600">
-                      {getOptionIcon(opt.name)}
-                    </div>
-                    <p className="font-semibold text-sm">{opt.name}</p>
-                  </div>
-                  <span className="text-xs text-gray-400">
-                    {opt.is_required ? "Required" : "Optional"}
+                {product.price.original > product.price.selling && (
+                  <span className="text-gray-400 line-through text-sm">
+                    Rp {product.price.original.toLocaleString("id-ID")}
                   </span>
-                </div>
+                )}
+              </div>
+            </div>
 
-                <div className="grid grid-cols-1 gap-2">
-                  {opt.values?.map((v: any) => {
-                    const selected = selectedOptions[opt.name];
-
-                    const isSelected =
-                      opt.type === "radio"
-                        ? selected?.value === v.value
-                        : selected?.some((x: any) => x.value === v.value);
-
-                    return (
-                      <div
-                        key={`${opt.id}-${v.value}`}
-                        onClick={() => handleSelect(opt, v)}
-                        className={`
-                          border rounded-xl p-2 cursor-pointer text-sm transition
-                          ${
-                            isSelected
-                              ? "border-green-600 bg-green-50"
-                              : "border-gray-300 hover:bg-gray-100"
-                          }
-                        `}
-                      >
-                        <div className="flex justify-between items-center font-medium">
-                          <span>{v.value}</span>
-                          <span className="text-gray-500 text-sm">
-                            +Rp {v.price.toLocaleString("id-ID")}
-                          </span>
-                        </div>
+            {/* 🔥 OPTIONS (SCROLLABLE ONLY) */}
+            <div className="flex-1 overflow-y-auto mt-4 pr-1">
+              {options.map((opt) => (
+                <div key={`${opt.id}-${opt.name}`} className="mt-5">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center gap-2">
+                      <div className="text-gray-600">
+                        {getOptionIcon(opt.name)}
                       </div>
-                    );
-                  })}
+                      <p className="font-semibold text-sm">{opt.name}</p>
+                    </div>
+                    <span className="text-xs text-gray-400">
+                      {opt.is_required ? "Required" : "Optional"}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {opt.values?.map((v: any) => {
+                      const selected = selectedOptions[opt.name];
+
+                      const isSelected =
+                        opt.type === "radio"
+                          ? selected?.value === v.value
+                          : selected?.some((x: any) => x.value === v.value);
+
+                      return (
+                        <div
+                          key={`${opt.id}-${v.value}`}
+                          onClick={() => handleSelect(opt, v)}
+                          className={`
+                  border rounded-xl p-2 cursor-pointer text-xs transition
+                  ${
+                    isSelected
+                      ? "border-green-600 bg-green-50"
+                      : "border-gray-300 hover:bg-gray-100"
+                  }
+                `}
+                        >
+                          <div className="flex justify-between space-x-3 items-center font-medium">
+                            <span>{v.value}</span>
+                            <span className="text-gray-500 text-xs">
+                              +Rp {v.price.toLocaleString("id-ID")}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* 🔥 FOOTER (TIDAK SCROLL) */}
+            <div className="my-4">
+              {/* QTY */}
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-3 border rounded-lg">
+                  <button
+                    onClick={() => setQty((q) => Math.max(1, q - 1))}
+                    className="hover:bg-gray-200 w-10 h-10 cursor-pointer rounded-l-lg"
+                  >
+                    -
+                  </button>
+                  <span>{qty}</span>
+                  <button
+                    onClick={() => setQty((q) => q + 1)}
+                    className="hover:bg-gray-200 w-10 h-10 cursor-pointer rounded-r-lg"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-            ))}
-          </>
-
-          {/* QTY */}
-          <div className="mt-6 flex items-center justify-between">
-            <div className="flex items-center gap-3 border rounded-lg px-3 py-1">
-              <button onClick={() => setQty((q) => Math.max(1, q - 1))}>
-                -
+              <button
+                disabled={!isValid()}
+                onClick={() => {
+                  addToCart(
+                    {
+                      ...product,
+                      options: formatOptionsForCart(),
+                    },
+                    qty,
+                  );
+                  onSuccess?.();
+                }}
+                className="w-full bg-green-600 disabled:bg-gray-400 text-white py-3 rounded-xl font-semibold"
+              >
+                Add to Cart • Rp {getTotalPrice().toLocaleString("id-ID")}
               </button>
-              <span>{qty}</span>
-              <button onClick={() => setQty((q) => q + 1)}>+</button>
             </div>
           </div>
-
-          {/* ADD BUTTON */}
-          <button
-            disabled={!isValid()}
-            onClick={() => {
-              addToCart(
-                {
-                  ...product,
-                  options: formatOptionsForCart(),
-                },
-                qty,
-              );
-              onSuccess?.();
-            }}
-            className="mt-6 w-full bg-green-600 disabled:bg-gray-400 text-white py-3 rounded-xl font-semibold"
-          >
-            Add to Cart • Rp {getTotalPrice().toLocaleString("id-ID")}
-          </button>
         </div>
       </div>
     </div>
