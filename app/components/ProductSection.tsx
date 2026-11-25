@@ -1,9 +1,11 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { Search, ShoppingCart, X } from "lucide-react";
-import { BrandKey, Product } from "../types/products";
+import { Plus, Search, X } from "lucide-react";
+import { BrandKey, Product, brands } from "../types/products";
 import { ProductModal } from "./ProductModal";
 import { SkeletonCard } from "./skeleton/SkeletonCard";
+import { getProductsByBrand, searchProducts } from "../lib/catalog";
 
 export function ProductSection({
   brand,
@@ -41,12 +43,9 @@ export function ProductSection({
         setQuery("");
         setSearchResults([]);
 
-        const res = await fetch(
-          `http://localhost:8000/products?brand=${brand}`,
-        );
-        const data = await res.json();
+        const data = await getProductsByBrand(brand);
 
-        setProducts(data.data);
+        setProducts(data);
         setLoadedImages({});
       } catch (err) {
         console.error("Fetch error:", err);
@@ -68,12 +67,9 @@ export function ProductSection({
       try {
         setLoadingSearch(true);
 
-        const res = await fetch(
-          `http://localhost:8000/products/search?q=${query}`,
-        );
-        const data = await res.json();
+        const data = await searchProducts(query);
 
-        setSearchResults(data.data);
+        setSearchResults(data);
       } catch (err) {
         console.error("Search error:", err);
       } finally {
@@ -95,152 +91,165 @@ export function ProductSection({
 
   const isSearching = query.length > 0;
 
+  // presentational only
+  const visibleProducts = isSearching ? searchResults : filteredProducts;
+  const brandName = brands.find((b) => b.id === brand)?.name ?? brand;
+  const isLoadingList = loadingProducts || loadingSearch;
+
   return (
-    <section className="px-4 md:px-6 pt-4 pb-12 max-w-6xl mt-5 rounded-t-2xl bg-white mx-auto">
-      {/* CATEGORY */}
-      <div className="sticky top-0 z-40 bg-white p-5 mb-5">
-        {/* CATEGORY */}
-        <div className="flex gap-2 overflow-x-auto mb-3 no-scrollbar">
-          {categories.map((c) => {
-            const active = selectedCategory === c;
+    <section className="mx-auto mt-6 max-w-6xl">
+      {/* ===== STICKY SEARCH + CATEGORY ===== */}
+      <div className="sticky top-0 z-40 bg-screen/90 px-4 pb-3 pt-3 backdrop-blur-xl">
+        <div className="relative md:max-w-md">
+          <Search
+            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
+            size={18}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
 
-            return (
-              <button
-                key={c}
-                onClick={() => setSelectedCategory(c)}
-                className={`
-            px-4 py-1.5 rounded-full text-xs whitespace-nowrap transition
-            ${
-              active
-                ? "bg-green-600 text-white"
-                : "bg-gray-100 hover:bg-gray-200"
-            }
-          `}
-              >
-                {c}
-              </button>
-            );
-          })}
+          <input
+            type="text"
+            placeholder="Mau minum apa hari ini?"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="h-12 w-full rounded-full border border-border-subtle bg-surface pl-11 pr-12 text-sm text-ink shadow-card outline-none transition placeholder:text-muted focus:border-primary focus:ring-4 focus:ring-primary/20"
+            aria-label="Cari produk"
+          />
+
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              className="absolute right-2 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-surface-alt text-secondary transition hover:bg-ink hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-label="Hapus pencarian produk"
+            >
+              <X size={15} />
+            </button>
+          )}
         </div>
 
-        {/* SEARCH */}
-        <div className="w-full md:w-[300px]">
-          <div className="relative">
-            <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-              size={18}
-            />
+        {!isSearching && (
+          <div
+            className="no-scrollbar -mx-4 mt-3 flex gap-2 overflow-x-auto px-4"
+            role="group"
+            aria-label="Filter kategori"
+          >
+            {categories.map((c) => {
+              const active = selectedCategory === c;
 
-            <input
-              type="text"
-              placeholder="Search..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="w-full pl-10 pr-10 py-2 rounded-xl border border-[#eee] bg-white text-sm outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
-            />
-
-            {query && (
-              <button
-                onClick={() => setQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-              >
-                <X size={16} />
-              </button>
-            )}
+              return (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setSelectedCategory(c)}
+                  aria-pressed={active}
+                  className={`h-9 shrink-0 whitespace-nowrap rounded-full px-4 text-xs transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-screen ${
+                    active
+                      ? "bg-primary font-bold text-on-primary shadow-primary"
+                      : "bg-surface-alt font-medium text-secondary hover:bg-[#e8e8e8] hover:text-ink"
+                  }`}
+                >
+                  {c}
+                </button>
+              );
+            })}
           </div>
-        </div>
+        )}
       </div>
-      {isSearching && (
-        <p className="text-sm text-gray-400 -mt-10 mb-10">
-          Results for &quot;{query}&quot;
-        </p>
-      )}
-      {/* PRODUCTS */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-        {/* 🔥 LOADING PRODUCTS */}
+
+      {/* ===== LIST HEADER ===== */}
+      <div className="mb-3 mt-3 flex items-end justify-between gap-3 px-4">
+        <div className="min-w-0">
+          <h2 className="truncate text-base font-bold tracking-[-0.01em] text-ink">
+            {isSearching
+              ? `Hasil untuk "${query}"`
+              : selectedCategory === "All Category"
+                ? `Menu ${brandName}`
+                : selectedCategory}
+          </h2>
+          {isSearching && (
+            <p className="mt-0.5 text-[11px] text-muted">
+              Pencarian dari semua brand
+            </p>
+          )}
+        </div>
+        {!isLoadingList && (
+          <span className="shrink-0 text-xs font-semibold text-primary-strong tabular-nums">
+            {visibleProducts.length} menu
+          </span>
+        )}
+      </div>
+
+      {/* ===== PRODUCTS ===== */}
+      <div className="grid grid-cols-2 gap-x-3 gap-y-5 px-4 md:grid-cols-3 md:gap-x-4 lg:grid-cols-4">
         {loadingProducts &&
           Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
 
-        {/* 🔍 LOADING SEARCH */}
         {loadingSearch &&
           Array.from({ length: 8 }).map((_, i) => (
             <SkeletonCard key={`search-${i}`} />
           ))}
 
-        {/* 🔥 REAL DATA */}
         {!loadingProducts &&
           !loadingSearch &&
           (isSearching ? searchResults : filteredProducts).map((p, i) => {
             const isLoaded = loadedImages[p.id ?? i];
 
             return (
-              <div
+              <button
                 key={p.id ?? i}
-                className="group bg-white rounded-3xl p-3 md:p-4 shadow-sm hover:shadow-xl transition-all duration-300"
+                type="button"
+                onClick={() => setSelectedProduct(p)}
+                className="group flex flex-col rounded-[22px] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-screen"
+                aria-label={`Lihat detail ${p.name}`}
               >
-                {/* 🔥 IMAGE FULL */}
-                <div className="relative h-[140px] md:h-[220px] overflow-hidden rounded-xl">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[22px] bg-surface-alt">
                   {!isLoaded && (
-                    <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                    <div className="absolute inset-0 animate-pulse bg-surface-alt" />
                   )}
 
                   <img
                     src={p.image}
+                    alt=""
                     onLoad={() => handleImageLoad(p.id ?? i)}
-                    className={`absolute inset-0 w-full h-full object-cover transition duration-300 ${
-                      isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                    className={`absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105 ${
+                      isLoaded ? "opacity-100" : "opacity-0"
                     }`}
                   />
 
-                  {/* BADGE */}
                   {p.price.original > p.price.selling && (
-                    <div
-                      className={`
-      absolute top-2 left-2 z-20 text-[10px] md:text-xs px-2 py-1 rounded-full font-semibold backdrop-blur-md border
-      ${
-        p.brand?.toLowerCase() === "starbuck"
-          ? "bg-white/80 border-white/40 text-gray-800"
-          : "bg-green-500/20 border-green-400/30 text-green-900"
-      }
-    `}
-                    >
+                    <span className="absolute left-2.5 top-2.5 z-20 rounded-full bg-ink px-2 py-1 text-[10px] font-bold text-white tabular-nums md:text-xs">
                       -{getDiscount(p.price.original, p.price.selling)}%
-                    </div>
+                    </span>
                   )}
 
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition" />
-
-                  {/* CART */}
-                  <button
-                    onClick={() => setSelectedProduct(p)}
-                    className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+                  <span
+                    className="absolute right-2.5 top-2.5 z-20 grid size-8 place-items-center rounded-full bg-surface text-ink shadow-card transition group-hover:bg-primary group-hover:text-on-primary md:size-9"
+                    aria-hidden="true"
                   >
-                    <div className="bg-green-600 text-white p-3 rounded-full shadow-xl hover:scale-110 transition">
-                      <ShoppingCart size={18} />
-                    </div>
-                  </button>
+                    <Plus size={17} strokeWidth={2.2} />
+                  </span>
                 </div>
 
-                {/* INFO */}
-                <div className="mt-3 md:mt-4">
-                  <p className="text-xs md:text-sm font-semibold line-clamp-2">
+                <div className="mt-2.5 px-1">
+                  <h3 className="line-clamp-2 text-[13px] font-semibold leading-[18px] text-ink md:text-sm md:leading-5">
                     {p.name}
-                  </p>
+                  </h3>
 
-                  <div className="mt-1 flex items-center gap-2 flex-wrap">
-                    <span className="text-green-600 font-bold text-lg md:text-base">
+                  <div className="mt-1 flex flex-wrap items-baseline gap-x-1.5 tabular-nums">
+                    <span className="text-sm font-bold text-ink md:text-base">
                       Rp {p.price.selling.toLocaleString("id-ID")}
                     </span>
 
                     {p.price.original > p.price.selling && (
-                      <span className="text-gray-400 text-xs line-through">
+                      <span className="text-[10px] text-muted line-through md:text-xs">
                         Rp {p.price.original.toLocaleString("id-ID")}
                       </span>
                     )}
                   </div>
                 </div>
-              </div>
+              </button>
             );
           })}
       </div>

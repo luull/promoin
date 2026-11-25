@@ -1,0 +1,97 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - heading "This site uses cookies, but not the kind you eat" [level=2] [ref=e6]
+    - generic [ref=e7]: We use cookies to remember log in details, provide secure log in, improve site functionality, and deliver personalized content. By continuing to browse the site, you accept cookies.
+    - generic [ref=e8]:
+      - button "Change cookie settings" [ref=e9] [cursor=pointer]
+      - button "Agree" [ref=e10] [cursor=pointer]
+    - link "Privacy Notice" [ref=e11] [cursor=pointer]:
+      - /url: https://www.starbucks.com/terms/privacy-notice/
+  - generic [ref=e13]:
+    - link "Skip to main content" [ref=e14] [cursor=pointer]:
+      - /url: "#content"
+    - banner [ref=e15]:
+      - navigation "Global" [ref=e16]:
+        - generic [ref=e18]:
+          - link "Home, Starbucks" [ref=e21] [cursor=pointer]:
+            - /url: https://www.starbucks.com
+          - generic [ref=e27]:
+            - list [ref=e29]:
+              - listitem [ref=e30]:
+                - link "Menu" [ref=e31] [cursor=pointer]:
+                  - /url: /menu
+              - listitem [ref=e32]:
+                - link "Rewards" [ref=e33] [cursor=pointer]:
+                  - /url: /rewards
+              - listitem [ref=e34]:
+                - link "Gift Cards" [ref=e35] [cursor=pointer]:
+                  - /url: /gift
+              - listitem [ref=e36]:
+                - link "Starbucks® Shop" [ref=e37] [cursor=pointer]:
+                  - /url: https://www.shop.starbucks.com/?utm_medium=website&utm_source=starbucks_main_nav&utm_campaign=shopstarbucks&utm_content=shop_home
+            - generic [ref=e39]:
+              - link "Find a café" [ref=e42] [cursor=pointer]:
+                - /url: /store-locator
+              - button "Sign in" [ref=e46] [cursor=pointer]
+              - link "Join now" [ref=e48] [cursor=pointer]:
+                - /url: /account/create
+    - main [ref=e50]:
+      - generic [ref=e51]:
+        - group "Choose an order type" [ref=e54]:
+          - generic [ref=e56] [cursor=pointer]:
+            - radio "Pickup" [checked] [ref=e57]
+            - text: Pickup
+          - generic [ref=e58] [cursor=pointer]:
+            - radio "Delivery" [ref=e59]
+            - text: Delivery
+        - heading "Café Locator" [level=1] [ref=e60]
+        - generic [ref=e62]:
+          - heading "Search Controls" [level=2] [ref=e63]
+          - generic [ref=e64]:
+            - search "Search for Starbucks cafés" [ref=e65]:
+              - searchbox "Enter a location to search for Starbucks cafés" [ref=e66]
+              - generic [ref=e67]: Suggestions will be displayed below as you type
+              - button "Submit search term" [ref=e69] [cursor=pointer]
+            - button "Filter , Show options for filtering café results. 0 filters active" [ref=e74] [cursor=pointer]: Filter
+        - generic [ref=e75]:
+          - generic [ref=e77]:
+            - generic [ref=e79]:
+              - generic:
+                - button "Keyboard shortcuts"
+              - region "Map" [ref=e80]
+              - generic [ref=e81]:
+                - iframe [aria-hidden] [ref=e133]
+                - button "Map camera controls" [ref=e135] [cursor=pointer]
+                - link "Open this area in Google Maps (opens a new window)" [ref=e137] [cursor=pointer]:
+                  - /url: https://maps.google.com/maps?ll=39.635307,-101.337891&z=5&t=m&hl=en&gl=US&mapclient=apiv3
+                  - img "Google" [ref=e139]
+                - generic [ref=e140]:
+                  - button "Keyboard shortcuts" [ref=e146] [cursor=pointer]
+                  - generic [ref=e147]: Map data ©2026 Google, INEGI
+                  - link "Terms (opens in new tab)" [ref=e156] [cursor=pointer]:
+                    - /url: https://www.google.com/intl/en_US/help/terms_maps.html
+                    - text: Terms
+            - generic [ref=e157]:
+              - generic [ref=e159]:
+                - button "Zoom map in" [ref=e160] [cursor=pointer]
+                - button "Zoom map out" [ref=e163] [cursor=pointer]
+              - button "Find locations near me" [ref=e167] [cursor=pointer]
+          - generic [ref=e172]:
+            - status [ref=e173]: Café Search Results
+            - article [ref=e175]:
+              - generic [ref=e176]:
+                - heading "Zoomed out too far" [level=3] [ref=e177]
+                - paragraph [ref=e178]: Try searching for a location or zooming in to see results.
+            - list [ref=e180]:
+              - listitem [ref=e181]:
+                - link "Privacy Notice, opens in new window" [ref=e182] [cursor=pointer]:
+                  - /url: https://www.starbucks.com/terms/privacy-notice/
+                  - generic [ref=e183]: Privacy Notice
+              - listitem [ref=e187]:
+                - link "Terms of Use, opens in new window" [ref=e188] [cursor=pointer]:
+                  - /url: https://www.starbucks.com/terms/starbucks-terms-of-use/
+                  - generic [ref=e189]: Terms of Use
+              - listitem [ref=e193]:
+                - link "Do Not Share My Personal Information, opens in new window" [ref=e194] [cursor=pointer]:
+                  - /url: /personal-information
+                  - generic [ref=e195]: Do Not Share My Personal Information

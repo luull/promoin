@@ -1,0 +1,1229 @@
+{
+  "dataset_name": "TOMORO COFFEE Jabodetabek",
+  "generated_at": "2026-11-25",
+  "scope": [
+    "Jakarta",
+    "Bogor",
+    "Depok",
+    "Tangerang",
+    "Tangerang Selatan",
+    "Bekasi"
+  ],
+  "outlet_count": 129,
+  "coverage_status": "expanded_third_party_directory_dataset",
+  "notes": [
+    "Gabungan daftar outlet yang terdaftar dalam PDF daftar outlet TOMORO yang di-host BCA (bertanggal 2025-09-08), direktori outlet bank/loyalty, dan hasil pencarian bisnis Google Maps.",
+    "Sebagian besar alamat berasal dari daftar pihak ketiga 2025 dan belum diverifikasi masih aktif pada 2026.",
+    "Record dari Krom/Bank Jago/CIMB yang hanya menyediakan nama outlet tidak diberi alamat buatan; field address tidak ada pada record tersebut.",
+    "Place ID, rating, review_count, dan phone hanya diisi untuk outlet yang memiliki hasil pencarian bisnis terstruktur. Null atau field yang tidak ada bukan berarti outlet tidak memiliki data.",
+    "Beberapa nama outlet dapat merujuk pada outlet yang pindah/tutup atau duplikat lintas direktori; lakukan verifikasi Google Maps sebelum dipakai sebagai data operasional."
+  ],
+  "sources": [
+    {
+      "name": "BCA-hosted TOMORO outlet PDF",
+      "url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "date": "2025-09-08"
+    },
+    {
+      "name": "Krom Bank TOMORO outlet directory",
+      "url": "https://krom.id/tomoro-coffee-outlet/"
+    },
+    {
+      "name": "Bank Jago TOMORO outlet list",
+      "url": "https://www.jago.com/id/jago/promo/jago-tomoro-anniversary"
+    },
+    {
+      "name": "CIMB Niaga TOMORO outlet directory",
+      "url": "https://branchlessbanking.cimbniaga.co.id/daftar-outlet-tomoro-coffee/"
+    },
+    {
+      "name": "Google Maps business search",
+      "url": "https://www.google.com/maps"
+    }
+  ],
+  "outlets": [
+    {
+      "name": "TOMORO COFFEE - Grand Kota Bintang",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Ruko Grand Kota Bintang (1), Jl. KH. Noer Ali No.1G, Jakasampurna, Bekasi Barat, Kota Bekasi, Jawa Barat 17145",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU A Yani",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Jenderal Ahmad Yani No.1, Marga Jaya, Bekasi Selatan, Kota Bekasi, Jawa Barat 17148",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Pakuwon Mall Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Pakuwon Mall Bekasi Lt. 2 Island Unit 212A, Jl. Raya Pekayon No.002, Pekayon Jaya, Bekasi Selatan, Kota Bekasi, Jawa Barat 17530",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Kartini Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Kartini No.73, Margahayu, Bekasi Timur, Kota Bekasi, Jawa Barat",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Kaliabang",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Ruko Kaliabang Artha Loka, Jl. Kali Abang Tengah No.77, Harapan Jaya, Bekasi Utara, Kota Bekasi, Jawa Barat 17122",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Kranggan",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Raya Kranggan Ruko No.62 C, Kranggan, Jatisampurna, Kota Bekasi, Jawa Barat 17433",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Jatiwarna",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Ruko Premier Estate 2, Jl. Raya Kodau No.AG2, Jatiwarna, Pondok Melati, Kota Bekasi, Jawa Barat 17415",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Citra Grand Cibubur",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Ruko Kawasan Niaga Citragran, Ruko Jimbaran B Blok R 02 No.3, Jatikarya, Jatisampurna, Kota Bekasi, Jawa Barat",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - KM 6B",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jalan Tol Jakarta-Bekasi Timur, Jatibening Baru, Pondok Gede, Kota Bekasi, Jawa Barat 17412",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Raya Jatimakmur",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Raya Jatikramat, Jatimakmur, Pondok Gede, Kota Bekasi, Jawa Barat 17422",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Kemang Sari",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Kemang Sari No.1, Jatibening Baru, Pondok Gede, Kota Bekasi, Jawa Barat",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Asia Tropis",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": "Ruko Grand Boulevard Blok AT, Jl. Taman Cemara No.46, Pusaka Rakyat, Tarumajaya, Kabupaten Bekasi, Jawa Barat 17214",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Summarecon Topaz Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Ruko Topaz Commercial Blok TC B.18, Summarecon Bekasi, Harapan Mulya, Medan Satria, Kota Bekasi, Jawa Barat",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Cipayung",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Jl. Cipayung Raya No.11, Cipayung, Jakarta Timur, DKI Jakarta 13840",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - AEON Mall JGC",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Jl. Jakarta Garden City Boulevard No.1, Cakung Timur, Cakung, Jakarta Timur, DKI Jakarta 13910",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Sedayu Kelapa Gading",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Sedayu City Boulevard Raya, Cakung Barat, Cakung, Jakarta Timur, DKI Jakarta 13910",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU Cakung",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Jl. Raya Bekasi, Cakung Barat, Cakung, Jakarta Timur, DKI Jakarta 13910",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Pondok Ungu Permai Sektor V",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Pondok Ungu Permai Sektor V Blok A17 No.15, Bahagia, Bekasi Utara, Kota Bekasi, Jawa Barat 17125",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Raffles Cibubur",
+      "brand": "TOMORO COFFEE",
+      "area": "Depok",
+      "address": "Raffles Hills, Ruko Citywalk Blok LB 20, Sukatani, Tapos, Kota Depok, Jawa Barat 16454",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Bintara Jaya",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Bintara Raya VI, Bintara, Bekasi Barat, Kota Bekasi, Jawa Barat 17134",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Cibubur Junction",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Cibubur Junction UG Floor Unit 03-KA, 03-KB & 05-K, Jl. Jambore No.1, Cibubur, Ciracas, Jakarta Timur, DKI Jakarta 13720",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Hankam Pondok Gede",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Raya Hankam, Jatirahayu, Pondok Melati, Kota Bekasi, Jawa Barat 17414",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Jatiwaringin",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Raya Jatiwaringin No.62, Jaticempaka, Pondok Gede, Kota Bekasi, Jawa Barat 17411",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Tamini Square",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Jl. Taman Mini Indonesia Indah 2 No.1, Pinang Ranti, Makasar, Jakarta Timur, DKI Jakarta 13560",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Harapan Indah",
+      "brand": "TOMORO COFFEE",
+      "area": "Bekasi",
+      "address": "Jl. Boulevard Hijau Raya No.B1, Pejuang, Medan Satria, Kota Bekasi, Jawa Barat 17131",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Arundina Cibubur",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Timur",
+      "address": "Jl. Lapangan Tembak, Cibubur, Ciracas, Jakarta Timur, DKI Jakarta 13720",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025",
+      "google_maps_place_id": "ChIJCevGNXbtaS4ROVQbzykSwJI",
+      "rating": 4.7,
+      "review_count": 508,
+      "phone": "+62 811-1928-5504",
+      "google_maps_source": "Google Maps business search"
+    },
+    {
+      "name": "TOMORO COFFEE - Pusat Mode Tanah Abang",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. H. Fachrudin No.51, Kampung Bali, Tanah Abang, Jakarta Pusat, DKI Jakarta 10250",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025",
+      "google_maps_place_id": "ChIJy1VIXFj3aS4RdI0Tcn56FQQ",
+      "rating": 4.9,
+      "review_count": 149,
+      "google_maps_source": "Google Maps business search"
+    },
+    {
+      "name": "TOMORO COFFEE - Cempaka Putih",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Cempaka Putih Tengah No.5, Cempaka Putih Timur, Cempaka Putih, Jakarta Pusat, DKI Jakarta 10510",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Gedung Sinergi 8",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Kebon Sirih No.48, Gambir, Jakarta Pusat, DKI Jakarta 10110",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - ITC Cempaka Mas",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Lobby Utama ITC Cempaka Mas, Sumur Batu, Kemayoran, Jakarta Pusat, DKI Jakarta 10510",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - MRT TransHub",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Pasar Blora No.24, Dukuh Atas, Menteng, Jakarta Pusat, DKI Jakarta 10310",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Metro Pasar Baru",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "GF T-01, Jl. Haji Samanhudi No.2B, Pasar Baru, Sawah Besar, Jakarta Pusat, DKI Jakarta 10710",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU Industri",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Industri Raya, Gunung Sahari Utara, Sawah Besar, Jakarta Pusat, DKI Jakarta 10720",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Kenari Mas Office",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Kramat Raya No.101, Paseban, Senen, Jakarta Pusat, DKI Jakarta 10440",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Gading Kirana",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Jl. Gading Kirana Blok B-10 Kav.42, Kelapa Gading, Jakarta Utara, DKI Jakarta 14240",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Gading Hybrida",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Jl. Raya Kelapa Hybrida Blok RB 1 Kav.9, Pegangsaan Dua, Kelapa Gading, Jakarta Utara, DKI Jakarta 14240",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Kirana Three",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "GF/30A, Jl. Kirana Avenue, Kelapa Gading Timur, Kelapa Gading, Jakarta Utara, DKI Jakarta 14240",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Koja Trade Mall",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "GF Blok G7, Jl. Kramat Jaya Raya No.30, Tugu Utara, Koja, Jakarta Utara, DKI Jakarta 14260",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU Yos Sudarso",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Jl. Yos Sudarso Kav.205, Sunter Jaya, Tanjung Priok, Jakarta Utara, DKI Jakarta 14360",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Warakas",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Jl. Warakas I No.31, Warakas, Tanjung Priok, Jakarta Utara, DKI Jakarta",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Sunter Utara",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Jl. Danau Sunter Utara No.3A, Sunter Agung, Tanjung Priok, Jakarta Utara, DKI Jakarta 14350",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Mangga Besar",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Barat",
+      "address": "Jl. Raya Mangga Besar No.67B, Tangki, Taman Sari, Jakarta Barat, DKI Jakarta 11180",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025",
+      "google_maps_place_id": "ChIJ58g8d8_1aS4RKlOXQY5iMOg",
+      "rating": 4.8,
+      "review_count": 557,
+      "phone": "+62 811-1991-0741",
+      "google_maps_source": "Google Maps business search"
+    },
+    {
+      "name": "TOMORO COFFEE - Raffles Juanda",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Pintu Air Raya No.1, Pasar Baru, Sawah Besar, Jakarta Pusat, DKI Jakarta 10710",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025",
+      "google_maps_place_id": "ChIJXZqEzp31aS4RcVwG2YEhKW0",
+      "rating": 4.5,
+      "review_count": 440,
+      "google_maps_source": "Google Maps business search"
+    },
+    {
+      "name": "TOMORO COFFEE - Foodcentrum Sunter",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Ruko Puri Mutiara No.14B Blok BA-BB-BC, Jl. Griya Utama, Sunter Agung, Tanjung Priok, Jakarta Utara, DKI Jakarta 14350",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Sumur Batu",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Howitzer No.28, Sumur Batu, Kemayoran, Jakarta Pusat, DKI Jakarta 10640",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Gedung Baja",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "GF-01 Tower B, Gedung Baja, Jl. Pangeran Jayakarta No.55, Mangga Dua Selatan, Sawah Besar, Jakarta Pusat, DKI Jakarta 10730",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Pecenongan",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Pecenongan Raya No.67C, Kebon Kelapa, Gambir, Jakarta Pusat, DKI Jakarta 10120",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025",
+      "google_maps_place_id": "ChIJg8JASsT1aS4ROK7bOKz3YPk",
+      "rating": 4.6,
+      "review_count": 389,
+      "google_maps_source": "Google Maps business search"
+    },
+    {
+      "name": "TOMORO COFFEE - Thamrin City",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Kebon Melati No.1, Kebon Melati, Tanah Abang, Jakarta Pusat, DKI Jakarta 10230",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Kelapa Gading",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "Jl. Kelapa Gading Boulevard Blok FV1, Kelapa Gading Timur, Kelapa Gading, Jakarta Utara, DKI Jakarta 14240",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Hotel Ibis Cikini",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Cikini Raya No.75, Cikini, Menteng, Jakarta Pusat, DKI Jakarta 10330",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Mall Of Indonesia",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Utara",
+      "address": "LG-PM-B-01, Jl. Raya Boulevard Barat No.12, Kelapa Gading Barat, Kelapa Gading, Jakarta Utara, DKI Jakarta 14240",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Green Pramuka",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Jenderal Ahmad Yani Kav.49, Rawasari, Cempaka Putih, Jakarta Pusat, DKI Jakarta 10570",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Percetakan Negara",
+      "brand": "TOMORO COFFEE",
+      "area": "Jakarta Pusat",
+      "address": "Jl. Percetakan Negara No.639, Cempaka Putih Barat, Cempaka Putih, Jakarta Pusat, DKI Jakarta 10520",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Tangcity Mall",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang",
+      "address": "Lobby Perintis LG Lot 6, Tangcity Mall, Jl. Jenderal Sudirman No.1, Cikokol, Tangerang, Banten 15117",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Cirendeu Tangerang Selatan",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Cirendeu Raya No.15, Cirendeu, Ciputat Timur, Tangerang Selatan, Banten 15419",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Pasopati Bintaro Sektor V",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Bintaro Utama Blok ED1, Sektor V No.2, Jurang Mangu Timur, Pondok Aren, Tangerang Selatan, Banten 15222",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Talaga Bestari",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Tangerang",
+      "address": "Jl. Taman Palem Raya Blok E No.1, Wana Kerta, Talaga Bestari, Kabupaten Tangerang, Banten 15560",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Greenlake",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang",
+      "address": "Ruko Cordoba Blok D No.21, Green Lake City, Petir, Cipondoh, Tangerang, Banten 15147",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - BINUS Alam Sutera",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang",
+      "address": "Kampus BINUS Alam Sutera, Jl. Jalur Sutera Barat Kav.21, Panunggangan, Pinang, Tangerang, Banten 15143",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ciputat",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Ruko UIN, Jl. Ir. H. Juanda No.107, Cempaka Putih, Ciputat Timur, Tangerang Selatan, Banten 15412",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Banjar Wijaya",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang",
+      "address": "Ruko Azores Blok B7 B/4, Perumahan Banjar Wijaya, Poris Plawad Indah, Cipondoh, Tangerang, Banten 15142",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Graha Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Ruko Melia Walk MD-A/37, Graha Raya, Paku Jaya, Serpong Utara, Tangerang Selatan, Banten 15326",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Raden Fatah",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang",
+      "address": "Jl. Raden Fatah, Sudirman Selatan, Ciledug, Tangerang, Banten 15226",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Merpati Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Merpati Raya No.103, Sawah Lama, Ciputat, Tangerang Selatan, Banten 15413",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Citra Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Tangerang",
+      "address": "Ruko Citra Raya Blok G No.1-3, Jl. Citra Raya Boulevard, Cikupa, Kabupaten Tangerang, Banten 15710",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - UPH Karawaci School",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Tangerang",
+      "address": "Jl. M.H. Thamrin Boulevard No.1100, Kelapa Dua, Kabupaten Tangerang, Banten 15811",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Living World Alam Sutera",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Alam Sutera Boulevard Kav.21, Pakulonan, Serpong Utara, Tangerang Selatan, Banten 15325",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - OCBC Space BSD",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Tangerang",
+      "address": "OCBC Space, BSD Grand Boulevard Lot 9, Pagedangan, Kabupaten Tangerang, Banten 15339",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Regency Tangerang",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang",
+      "address": "Ruko Wisma Harapan Blok D5 No.23, Jl. Regency Raya, Periuk, Tangerang, Banten 15133",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Sepatan",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Tangerang",
+      "address": "Jl. Raya Mauk, Sepatan, Kabupaten Tangerang, Banten 15520",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ciputat Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Dewi Sartika No.11G, Ciputat, Tangerang Selatan, Banten 15411",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU Bintaro Sektor 9",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Jenderal Sudirman, Pondok Pucung, Pondok Aren, Tangerang Selatan, Banten 15229",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Bintaro Xchange Mall",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Bintaro Jaya Xchange Mall 2 Lt.1, Jl. Boulevard Bintaro Jaya No.2, Pondok Jaya, Pondok Aren, Tangerang Selatan, Banten 15227",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Emerald Bintaro",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Emerald Boulevard, Parigi, Pondok Aren, Tangerang Selatan, Banten 15227",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Regia",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Graha Raya Bintaro, Pondok Kacang Barat, Pondok Aren, Tangerang Selatan, Banten 15226",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Bintaro Sektor 6",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Cut Mutia II Blok FG2 No.38, Jurang Mangu Barat, Pondok Aren, Tangerang Selatan, Banten 15222",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU Alam Sutera",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": "Jl. Alam Sutera Boulevard, Pakualam, Serpong Utara, Tangerang Selatan, Banten 15320",
+      "source": "BCA-hosted TOMORO outlet list PDF dated 2025-09-08",
+      "source_url": "https://pustaka.bca.co.id/files/promo-bca/2025/20250908-List-Outlet-Tomoro-Coffee.pdf",
+      "verification_status": "third_party_directory_listing_2025"
+    },
+    {
+      "name": "TOMORO COFFEE - Cibinong City Mall",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Transmart Yasmin Bogor",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Kota Wisata",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Pandu Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - IPB Dramaga",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Sukahati Bogor",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Bogor Trade Mall",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Taman Topi",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Q Square",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Pasir Mulya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Jenderal Sudirman Bogor",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Surya Kencana",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Pomad",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Dramaga",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Legenda Wisata",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Bukit Dago",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Parung",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Jl Jati",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko MT Haryono",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bogor",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Citayam Center",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Margonda Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Tol Kukusan",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Raya Bojongsari",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Raya Muchtar Sawangan",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Cimanggis",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Raya Gandul",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Cinere Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Raya Sawangan",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Parung Bingung",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Tole Iskandar",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Sentosa Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Tapos",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Depok",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Grand Galaxy Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Mutiara Gading Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Nusantara Raya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Kemang Pratama",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - SPBU Hyundai",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Lippo Cikarang",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Picadilly Lippo Cikarang",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Sudirman Jababeka",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Cikarang Utara",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Living Plaza Jababeka",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ruko Djava Jababeka",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Tambun City",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Mangun Jaya",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Grand Wisata Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Golden City Bekasi",
+      "brand": "TOMORO COFFEE",
+      "area": "Kota Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Vasanta Innopark",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Bekasi",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Ciputat Center",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Cireundeu",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Golden Vienna",
+      "brand": "TOMORO COFFEE",
+      "area": "Tangerang Selatan",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    },
+    {
+      "name": "TOMORO COFFEE - Kelapa Dua",
+      "brand": "TOMORO COFFEE",
+      "area": "Kabupaten Tangerang",
+      "address": null,
+      "source": "Krom Bank / Bank Jago / CIMB Niaga outlet directories",
+      "source_url": "https://krom.id/tomoro-coffee-outlet/",
+      "verification_status": "directory_listing_only_address_not_independently_verified"
+    }
+  ]
+}

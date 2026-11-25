@@ -1,0 +1,31 @@
+- generic [active] [ref=f31e1]:
+  - main [ref=f31e2]:
+    - generic [ref=f31e3]:
+      - generic [ref=f31e8]:
+        - paragraph [ref=f31e9]: Pesan kopi lebih hemat
+        - paragraph [ref=f31e10]: Promoin
+      - button "Buka keranjang" [ref=f31e11]
+    - generic [ref=f31e16]:
+      - generic [ref=f31e19]:
+        - generic [ref=f31e20]: NIKMATI PROMO
+        - heading "Hemat 30% ++ untuk Setiap Pembelian Kopi." [level=1] [ref=f31e21]
+        - link "Belanja" [ref=f31e22] [cursor=pointer]:
+          - /url: "#brand"
+      - img "Ilustrasi promo Promoin" [ref=f31e27]
+    - region "Pilih Brand" [ref=f31e30]:
+      - heading "Pilih Brand" [level=2] [ref=f31e32]
+    - generic [ref=f31e38]:
+      - generic [ref=f31e39]:
+        - textbox "Cari produk" [ref=f31e41]:
+          - /placeholder: Mau minum apa hari ini?
+        - group "Filter kategori" [ref=f31e42]:
+          - button "All Category" [pressed] [ref=f31e43]
+      - heading "Menu Fore Coffee" [level=2] [ref=f31e46]
+    - navigation "Navigasi utama" [ref=f31e88]:
+      - link "Beranda" [ref=f31e89] [cursor=pointer]:
+        - /url: "#top"
+      - link "Pilih brand" [ref=f31e94] [cursor=pointer]:
+        - /url: "#brand"
+      - button "Buka keranjang" [ref=f31e99]
+  - button "Open Next.js Dev Tools" [ref=f31e109] [cursor=pointer]
+  - alert [ref=f31e113]

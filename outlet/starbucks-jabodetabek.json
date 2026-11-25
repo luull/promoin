@@ -1,0 +1,1310 @@
+{
+  "metadata": {
+    "brand": "Starbucks",
+    "scope": "Jabodetabek",
+    "generated_at": "2026-11-25",
+    "total_records": 127,
+    "coverage_status": "expanded_partial_directory_dataset",
+    "description": "Gabungan outlet bernama dari direktori GrabFood dan daftar Drive-Thru resmi Starbucks Indonesia. Bukan daftar lengkap atau verifikasi gerai aktif secara real-time.",
+    "sources": [
+      {
+        "name": "Starbucks Indonesia - Drive-Thru stores",
+        "url": "https://www.starbucks.co.id/drivethru",
+        "type": "official"
+      },
+      {
+        "name": "GrabFood - Starbucks delivery directory",
+        "url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+        "type": "third_party_directory"
+      },
+      {
+        "name": "GrabFood - Starbucks delivery directory (English)",
+        "url": "https://food.grab.com/id/en/chain/starbucks-delivery",
+        "type": "third_party_directory"
+      },
+      {
+        "name": "Google Maps business search",
+        "url": null,
+        "type": "business_listing_sample"
+      }
+    ],
+    "limitations": [
+      "Nama dan alamat dari direktori pihak ketiga belum membuktikan gerai masih beroperasi.",
+      "Sebagian gerai Drive-Thru hanya memiliki nama tanpa alamat lengkap.",
+      "Beberapa gerai dapat memiliki nama alternatif atau duplikasi pada platform berbeda.",
+      "Data tidak boleh dianggap sebagai inventaris resmi Starbucks yang lengkap."
+    ]
+  },
+  "outlets": [
+    {
+      "name": "Setiabudi One",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Setiabudi One, Setiabudi Building 1, 1st Floor, Jl. H.R. Rasuna Said No. 62, Jakarta 12920",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Mal Ciputra",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": "Gedung Mal Ciputra, Lantai LG Unit 17A, Jl. Arteri S. Parman, Grogol, Jakarta Barat 11470",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sampoerna Strategic Square",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Sampoerna Strategic Tower A, GF Unit 03, Jl. Jenderal Sudirman Kav. 45-46, Karet Semanggi, Jakarta Selatan 12930",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Plaza Sentral",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Plaza Sentral, Jl. Jend. Sudirman No. 47, Jakarta 12930",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Spark Mall Senayan",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Pusat",
+      "address": "Park/Spark Mall Senayan, LG No. 12, Jl. Gerbang Pemuda No. 3, Jakarta Pusat 10270",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "RDTX Square",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "RDTX Square GF, Jl. Prof. DR. Satrio No. 164, Karet Semanggi, Setiabudi, Jakarta Selatan 12930",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Land's End PIK Reserve",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Land's End PIK 2, Jl. Yos Sudarso, Dadap, Kosambi, Tangerang 15211",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Kota Harapan Indah",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Kota Harapan Indah, Jl. Harapan Indah Boulevard, Medan Satria, Bekasi 17132",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Duta Garden",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Jl. Duta Gardenia II, Jurumudi Baru, Benda, Kota Tangerang 15124",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Kota Bintang",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Grand Kota Bintang, Kalimalang, Jl. KH Noer Ali, Jaka Sampurna, Bekasi Barat 17145",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Graha Raya Bintaro",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Kavling Komersial Distrik Fortune, Graha Raya, Sudimara Pinang, Tangerang Selatan 15324",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Airport Hub Cengkareng",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Airport Hub G-4-13, Jl. Husein Sastranegara, Benda, Tangerang 15125",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Plaza Cireundeu",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Jl. Cireundeu Raya, Pisangan, Pondok Cabe, Ciputat Timur, Tangerang Selatan 15419",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Bintaro Sektor 9 Drive-Thru",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Jl. Bintaro Utama 9, Tangerang Selatan 15229",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Emerald Bintaro",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Komplek Driving Range Emerald CBD, Jl. CBD Emerald Blok EB/A, Boulevard Bintaro Jaya, Tangerang Selatan 15224",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Sakura Garden Cipayung",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": "Jl. Bina Marga No. 88, Ceger, Cipayung, Jakarta Timur 13820",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Taman Galaxy",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Taman Galaxy Raya No. 295, Jaka Setia, Bekasi Selatan, Bekasi 17147",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Living Plaza Cinere",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Living Plaza Cinere GF Unit G-08/G-08T/G-08A, Jl. Cinere Raya No. 100, Depok 16514",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Jatiwarna",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Hankam No. 33-34, Jatimelati, Pondok Melati, Bekasi 17415",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Cipondoh",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Jl. KH Hasyim Ashari No. 25, Poris Plawad Utara, Cipondoh, Kota Tangerang 15141",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Jakarta Premium Outlets",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Jakarta Premium Outlets Lt. 1 Unit 1330, Jl. Jalur Sutera Boulevard No. 41, Panunggangan Timur, Pinang, Tangerang 15143",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Grand Galaxy Park",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Boulevard Raya, Jaka Setia, Bekasi Selatan, Bekasi 17147",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Grand Metropolitan Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Grand Metropolitan Mall GF/Unit 26, Jl. KH Noer Ali, Bekasi Selatan 17148",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Lenteng Agung",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Jl. Raya Lenteng Agung No. 5, Srengseng Sawah, Jagakarsa, Jakarta Selatan 12640",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Kelapa Dua",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Jl. Akses UI No. 41/56, Cimanggis, Depok 16954",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Teras Kota",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Teraskota Entertainment, Jl. Pahlawan Seribu, CBD Lot VII B, Lengkong Gudang, Serpong, Tangerang Selatan 15322",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Pesona Square Depok",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Pesona Square GF 4A & 5A, Jl. Ir. H. Juanda No. 99, Baktijaya, Sukmajaya, Depok 16418",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Summarecon Mall Serpong 2",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Summarecon Mall Serpong, GF Unit 36, Gading Serpong Boulevard, Pakulonan Barat, Kelapa Dua, Tangerang 15810",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Alternative Cibubur",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Jl. Alternatif Cibubur No. 12A, Harjamukti, Cimanggis, Depok 16454",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "D Mall Depok",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "D Mall GF Unit G.1B, Jl. Margonda Raya Kav. 88, Depok 16423",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Trans Studio Mall Cibubur",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Trans Studio Mall Cibubur GF, Jl. Alternatif Cibubur No. 230A, Harjamukti, Cimanggis, Depok 16454",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Citra Gran Cibubur",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Alternatif Cibubur-Cileungsi KM 4, Jatikarya, Jatisampurna, Bekasi 17435",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Living World Kota Wisata",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": "Living World Kota Wisata, Jl. Boulevard Wisata, Ciangsana, Gunung Putri, Bogor 16968",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Jatiuwung",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Jl. Raya Pantura No. 2, Keroncong, Jatiuwung, Tangerang 15134",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Grand Depok City",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Jl. Boulevard Grand Depok City, Tirtajaya, Sukmajaya, Depok 16413",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Bojongsari Sawangan",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Jl. Raya Bojongsari No. 53, Bojongsari Lama, Depok 16517",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Grand Wisata Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Celebration Boulevard Kav. 1, Lambang Jaya, Tambun, Bekasi 17158",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Taman Ubud Karawaci",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Perumahan Lippo Karawaci, Jl. Permata Sari Blok A13, Binong, Curug, Kabupaten Tangerang 15810",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Grand Batavia",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Jl. Raya Cadas-Kukun No. 35, Distrik Grand Batavia, Puri Jaya, Pasar Kemis, Kabupaten Tangerang 15560",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Citra Raya Festival Cikupa",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Citraraya Food Festival, Jl. Raya Serang KM 14.7, Cikupa, Kabupaten Tangerang 15710",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sukahati Cibinong",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": "Jl. Raya Sukahati No. 70, Sukahati, Cibinong, Bogor 16913",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Citywalk Lippo Cikarang",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Citywalk Lippo Cikarang, Jl. MH Thamrin, Cibatu, Cikarang Selatan, Bekasi 17550",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Living Plaza Jababeka",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Living Plaza Jababeka GF G-22/G-22A, Jl. Niaga Raya Kav. 1-4, Mekarmukti, Cikarang Utara, Bekasi 17550",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Mall Lippo Cikarang",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Mall Lippo Cikarang GF, Jl. MH Thamrin, Cibatu, Cikarang Selatan, Bekasi 17530",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Cikarang",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Mataram Kav. 35, Cibatu, Cikarang Selatan, Kabupaten Bekasi 17530",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Teras Yasmin",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": "Teras Yasmin GF, Jl. Abdullah Bin Nuh No. 33-35, Bogor 16113",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sentul City",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": "Marketing Gallery Sentul City, Jl. MH Thamrin Kav. 8, Sentul City, Bogor 16810",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "AEON Mall Sentul",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": "Jl. MH Thamrin, Citaringgul, Babakan Madang, Bogor 16810",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Deltamas Greenland Square",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Greenland Square Delta Mas, Jl. Delta Mas Boulevard Kav. BA 3C, Sukamahi, Cikarang Pusat, Bekasi 17530",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "AEON Deltamas",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Ganesha Boulevard, Hegarmukti, Cikarang Pusat, Bekasi 17530",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sudirman Bogor",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": "Jl. Jend. Sudirman, Sempur, Bogor Tengah, Bogor 16129",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Telkom Landmark Tower",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "The Telkom Hub Lt. 6, Jl. Gatot Subroto Kav. 52, Kuningan Barat, Mampang Prapatan, Jakarta Selatan 12710",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Ancol",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Utara",
+      "address": "Jl. Pantai Indah No. 1, Ancol, Pademangan, Jakarta Utara 14430",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Plaza Senayan Reserve",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Pusat",
+      "address": "Plaza Senayan GF, Jl. Asia Afrika No. 8, Gelora, Tanah Abang, Jakarta Pusat 10270",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Menara Kadin",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Menara Kadin GF A3, Jl. HR Rasuna Said Blok X-5 Kav. 2-3, Kuningan Timur, Setiabudi, Jakarta Selatan 12950",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sogo Plaza Senayan Level 5",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Pusat",
+      "address": "Plaza Senayan Lt. 5, Jl. Asia Afrika No. 8, Gelora, Tanah Abang, Jakarta Pusat 10270",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Capital Place",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Capital Place, Jl. Gatot Subroto Kav. 18, Kuningan Barat, Mampang Prapatan, Jakarta Selatan 12710",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Patra Jasa Office Tower",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Patra Jasa Office Tower GF, Jl. Gatot Subroto Kav. 32-34, Kuningan Timur, Setiabudi, Jakarta Selatan 12950",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Senayan City 1",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Senayan City, Crystal Lagoon Area LG, Jl. Asia Afrika Lot 19, Jakarta 10270",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Tempo Scan",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Tempo Scan Tower GF, Jl. HR Rasuna Said, Jakarta Selatan 12940",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Senayan City 3 Reserve",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Senayan City GF, Jl. Asia Afrika No. 19, Jakarta 10270",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sunter Mall",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Utara",
+      "address": "Sunter Mall, Jl. Danau Sunter Utara Blok G7 Kav. II, Sunter Agung, Jakarta Utara 14350",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Tebet Raya",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Jl. Tebet Raya No. 27, Tebet Barat, Jakarta Selatan 12810",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Supomo Tebet",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Jl. Prof. Dr. Supomo No. 30, Tebet Barat, Jakarta Selatan 12810",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Sunter Green Lake",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Utara",
+      "address": "Ruko Greenlake Sunter Blok TBS Unit S dan T, Jl. Danau Sunter Selatan, Jakarta Utara 14350",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Gallery West Kebon Jeruk",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": "Gallery West, Jl. Panjang No. 5, Kebon Jeruk, Jakarta Barat 11530",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Wang Plaza",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": "Wang Plaza, Jl. Panjang Kav. 17, Kedoya Utara, Kebon Jeruk, Jakarta Barat 11520",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Emporium Pluit",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Utara",
+      "address": "Emporium Pluit, Jl. Pluit Selatan Raya No. 1, Penjaringan, Jakarta Utara 14440",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Citra 6",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": "Marketing Gallery Citra Garden City, Tegal Alur, Kalideres, Jakarta Barat 11820",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Menara FIF",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Menara FIF GF Unit GF 03, Jl. TB Simatupang Kav. 15, Lebak Bulus, Cilandak, Jakarta Selatan 12440",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "South Quarter",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "South Quarter, Jl. RA Kartini Kav. 8, Cilandak Barat, Jakarta Selatan 12430",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Arcadia Towers",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Arcadia Green Park Tower F GF, Jl. TB Simatupang Kav. 88, Kebagusan, Pasar Minggu, Jakarta Selatan 12520",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Jatiwaringin",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Jl. Raya Jatiwaringin No. 45, Jaticempaka, Pondok Gede, Bekasi 17411",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "AEON Mall Jakarta Garden City",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": "AEON Jakarta Garden City GF Lot G-15, Jl. Kayu Tinggi, Cakung, Jakarta Timur 13950",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Bintaro Plaza",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Plaza Bintaro, Jl. Bintaro Utama III, Bintaro Jaya Sektor 3A, Tangerang Selatan 15225",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Citra 7",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": "Ruko Seventh Esplanade Citra 7, Kalideres, Jakarta Barat 11840",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Rest Area KM 6B",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Rest Area KM 6B, Tol Jakarta-Bekasi Timur, Jatibening Baru, Pondok Gede, Bekasi 17412",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "AEON Tanjung Barat",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "AEON Tanjung Barat GF G-08, Jl. Raya Tanjung Barat No. 163, Jagakarsa, Jakarta Selatan 12530",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Adhyaksa",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "Jl. Adhyaksa 9 No. 1, Lebak Bulus, Cilandak, Jakarta Selatan 12440",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "One Belpark Mall",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": "One Belpark GF Unit 12A & B, Jl. RS Fatmawati Raya No. 1, Pondok Labu, Cilandak, Jakarta Selatan 12450",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Metland Menteng",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": "Jl. Menteng Niaga, Ujung Menteng, Cakung, Jakarta Timur 13960",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Cijantung Mall",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": "Graha Cijantung Mall, Jl. Pendidikan 1, Cijantung, Pasar Rebo, Jakarta Timur 13770",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Green Terrace Taman Mini",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": "Green Terrace Taman Mini GF Blok D No. 14-15, Jl. Pintu I TMII, Jakarta Timur 13820",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Bintaro Sektor 7",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Jl. Wahid Hasyim, Pondok Jaya, Pondok Aren, Tangerang Selatan 15220",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Metropolitan Mall Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Metropolitan Mall Bekasi Lt. 1, Jl. KH Noer Ali, Bekasi Selatan 17148",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Summarecon Mall Bekasi 2",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Summarecon Mall Bekasi 2, Downtown Walk, Jl. Boulevard Ahmad Yani, Marga Mulya, Bekasi Utara 17142",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Pacific Garden",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Pacific Garden, Jl. Jalur Sutera Barat Kav. 19B, Panunggangan Timur, Pinang, Tangerang 15143",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Centre Point PIK",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "DT North Point, Jl. MH Thamrin, Salembaran Raya, Kosambi, Tangerang 15214",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Living World Alam Sutera",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Living World Alam Sutera, Jl. Alam Sutera Boulevard Kav. 21, Pakulonan, Serpong Utara, Tangerang Selatan 15325",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Lapangan Tembak Ciracas",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": "Jl. Lapangan Tembak, Ciracas, Jakarta Timur 13720",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Flavour Bliss Alam Sutera",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Flavor Bliss No. 25, Jl. Alam Sutera Boulevard, Serpong, Tangerang Selatan 15325",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Margonda Raya",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": "Jl. Margonda Raya No. 488, Beji, Depok 16425",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Juanda Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Ruko Juanda, Jl. Ir. H. Juanda No. 99, Duren Jaya, Bekasi Timur 17111",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Tokyo Hub PIK",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Tokyo Riverside Apartment Tower 5 Unit 5.1-5.3, Jl. Tokyo Riverside Blvd No. 2, Lemo, Teluknaga, Tangerang 15510",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Intermark",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Intermark GF Unit 12/LG Unit 11, Jl. Lingkar Timur, Rawa Mekar Jaya, Serpong, Tangerang Selatan 15310",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Pamulang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Jl. Siliwangi Raya, Ruko Pamulang Blok E No. 13, Pamulang Barat, Tangerang Selatan",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Link Square Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Link Square, Jl. Pemuda Silwangi No. 126, Bekasi 17116",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Tang City",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Tang City Mall, Jl. Jend. Sudirman No. 1, Cikokol, Tangerang 15117",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "BSD",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": "Komplek BSD Blok IIIA, Sektor Komersial IIIA, Lengkong Wetan, Serpong, Tangerang Selatan 15310",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "Kisamaun Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": "Jl. Daan Mogot No. 35, Sukarasa, Kota Tangerang 15111",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT Golden City Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": "Mall Golden City Bekasi, Jl. Nusantara Raya, Teluk Pucung, Bekasi Utara 17121",
+      "source": "GrabFood directory",
+      "source_url": "https://food.grab.com/id/id/chain/starbucks-delivery",
+      "verification_status": "directory_listed_not_live_verified",
+      "notes": "Alamat/nama ditranskripsikan dari cuplikan direktori; konfirmasi status operasional langsung sebelum digunakan."
+    },
+    {
+      "name": "DT KM 10",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Ranch Pesanggrahan",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Hayam Wuruk",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Mampang Business Park",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Pulomas",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Sedayu City Jakarta",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Utara",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "KCIC Halim Station",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Timur",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT S Parman Slipi",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Barat",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Ampera Raya",
+      "brand": "Starbucks",
+      "city_or_regency": "Jakarta Selatan",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Bogor Rest Area Bogor",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 35 Bogor",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 45 Bogor",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 21 Jagorawi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 13,5 Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 14 Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 7 Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 42,5 Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Bez Serpong",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Metland Cybercity Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Graha Raya Bintaro Tangerang",
+      "brand": "Starbucks",
+      "city_or_regency": "Tangerang Selatan",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 19",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 39 Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT KM 6B Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Kota Wisata Bogor",
+      "brand": "Starbucks",
+      "city_or_regency": "Bogor",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Bojongsari Sawangan Depok",
+      "brand": "Starbucks",
+      "city_or_regency": "Depok",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    },
+    {
+      "name": "DT Deltamas Bekasi",
+      "brand": "Starbucks",
+      "city_or_regency": "Bekasi",
+      "address": null,
+      "source": "Starbucks Indonesia official Drive-Thru listing",
+      "source_url": "https://www.starbucks.co.id/drivethru",
+      "verification_status": "official_drive_thru_listing_address_not_provided",
+      "notes": "Nama gerai tercantum pada daftar Drive-Thru resmi; alamat lengkap tidak dicantumkan pada sumber."
+    }
+  ]
+}

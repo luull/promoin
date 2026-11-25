@@ -1,0 +1,440 @@
+{
+  "dataset_name": "Kopi Kenangan Jabodetabek",
+  "generated_at": "2026-11-25",
+  "scope": [
+    "Jakarta",
+    "Bogor",
+    "Depok",
+    "Tangerang",
+    "Tangerang Selatan",
+    "Bekasi"
+  ],
+  "record_count": 42,
+  "coverage_status": "expanded_partial_dataset",
+  "important_note": "Daftar gabungan hasil pencarian Google Maps/business, direktori GrabFood, dan direktori outlet pihak ketiga. Record dengan verification_status directory_listing_only atau historical_directory_listing belum diverifikasi sebagai outlet aktif melalui Google Maps; rating, Place ID, telepon, dan jam operasional sengaja tidak diisi jika tidak tersedia. Daftar ini belum dapat diklaim lengkap.",
+  "sources": [
+    {
+      "name": "Kopi Kenangan official outlet locator",
+      "url": "https://kenanganglobal.com/id/outlets"
+    },
+    {
+      "name": "GrabFood Kopi Kenangan chain listing",
+      "url": "https://food.grab.com/id/id/chain/kopi-kenangan-delivery"
+    },
+    {
+      "name": "CIMB Niaga Kopi Kenangan outlet list",
+      "url": "https://branchlessbanking.cimbniaga.co.id/kopi-kenangan-group/"
+    },
+    {
+      "name": "Bank Mandiri historical outlet list",
+      "url": "https://www.bankmandiri.co.id/documents/20143/45659490/List%2Boutlet%2Bkopi%2Bkenangan.pdf"
+    }
+  ],
+  "outlets": [
+    {
+      "name": "Kopi Kenangan x Chigo - Ruko Cileungsi",
+      "city": "Cileungsi",
+      "regency": "Kabupaten Bogor",
+      "address": "Jl. Raya Cileungsi - Jonggol, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820, Indonesia",
+      "place_id": "ChIJbecU-dGVaS4RVOTDkaY09z8",
+      "rating": 4.4,
+      "review_count": 353,
+      "opening_hours": "08:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Superindo Limus Pratama",
+      "city": "Cileungsi",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Limus Pratama, Superindo, Jl. Raya Narogong No.12A, Limus Nunggal, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820, Indonesia",
+      "place_id": "ChIJ10JfSEWTaS4R4VI1ZMW4J6A",
+      "rating": 4.6,
+      "review_count": 311,
+      "phone": "+62 817-0739-214",
+      "opening_hours": "10:00-21:00 (Sabtu hingga 00:00)",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Metland Cileungsi",
+      "city": "Cileungsi",
+      "regency": "Kabupaten Bogor",
+      "address": "Metland Cileungsi, Jl. Metro Raya No.01B Lantai Ground, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820, Indonesia",
+      "place_id": "ChIJZZIn_T6TaS4RCQ8t2cr6ixI",
+      "rating": 4.3,
+      "review_count": 141,
+      "phone": "+62 817-0731-593",
+      "opening_hours": "08:30-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Citra Indah Square Jonggol",
+      "city": "Jonggol",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Citra Indah Square 2, Jl. Raya Cileungsi-Jonggol, Cipeucang, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820, Indonesia",
+      "place_id": "ChIJPX_rrReXaS4RgTcc0TrTEVs",
+      "rating": 4.3,
+      "review_count": 188,
+      "phone": "+62 818-8288-3964",
+      "opening_hours": "08:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Commpark Kota Wisata",
+      "city": "Cileungsi",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Commpark Kota Wisata No.29-30 Blok G, Jl. Canadian Broadway, Limus Nunggal, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820, Indonesia",
+      "place_id": "ChIJAauKmkqTaS4Risy3e0os-lI",
+      "rating": 4.6,
+      "review_count": 87,
+      "opening_hours": "07:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - BP Cikarang",
+      "city": "Cikarang Selatan",
+      "regency": "Kabupaten Bekasi",
+      "address": "BP Cikarang Sriwijaya, Jl. Sriwijaya No.22, Cibatu, Kec. Cikarang Selatan, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJYfI0RlWbaS4R3gzt4U-_O_s",
+      "rating": 4.5,
+      "review_count": 816,
+      "phone": "+62 817-0017-949",
+      "opening_hours": "07:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Cikarang Avenue",
+      "city": "Cikarang Selatan",
+      "regency": "Kabupaten Bekasi",
+      "address": "Cikarang Avenue, Jl. MH. Thamrin Unit Building B, Cibatu, Kec. Cikarang Selatan, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJVcHC6r2baS4RbH7lTY-e9AQ",
+      "rating": 4.5,
+      "review_count": 405,
+      "phone": "+62 819-4421-5279",
+      "opening_hours": "08:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - BP Jababeka Hollywood",
+      "city": "Cikarang Utara",
+      "regency": "Kabupaten Bekasi",
+      "address": "BP Jababeka Hollywood, Jl. H. Usmar Ismail, Mekarmukti, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJ4Z2Ac_KbaS4RHv1Is_J9xAg",
+      "rating": 4.5,
+      "review_count": 514,
+      "phone": "+62 817-0110-213",
+      "opening_hours": "06:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Tarum Barat Cikarang",
+      "city": "Cikarang Pusat",
+      "regency": "Kabupaten Bekasi",
+      "address": "Ruko Midi Niaga, Pintu 11 Jababeka, Jl. Tarum Barat II No.10 Blok D.1, Jayamukti, Kec. Cikarang Pusat, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJi9HyWm6baS4RkGv1Aeg9hxk",
+      "rating": 4.8,
+      "review_count": 186,
+      "phone": "+62 819-4422-2978",
+      "opening_hours": "07:00-23:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Cikarang Utara",
+      "city": "Cikarang Utara",
+      "regency": "Kabupaten Bekasi",
+      "address": "Jl. RE. Martadinata No.20, Karangbaru, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJ0yeWDjaFaS4RDmdl4IvbK_8",
+      "rating": 4.6,
+      "review_count": 336,
+      "phone": "+62 817-0739-170",
+      "opening_hours": "07:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Living World Plaza Jababeka",
+      "city": "Cikarang Utara",
+      "regency": "Kabupaten Bekasi",
+      "address": "Living World / Living Plaza Jababeka, Lantai GF, Mekarmukti, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJHSfJUQibaS4R9pyWH85sohQ",
+      "rating": 4.5,
+      "review_count": 491,
+      "phone": "+62 817-0110-215",
+      "opening_hours": "08:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Deltamas",
+      "city": "Cikarang Pusat",
+      "regency": "Kabupaten Bekasi",
+      "address": "Ruko Palais DE Paris A12, Sukamahi, Kec. Cikarang Pusat, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "place_id": "ChIJeb0Fc9ObaS4RW8OdYrSX0LM",
+      "rating": 4.5,
+      "review_count": 406,
+      "phone": "+62 817-0739-194",
+      "opening_hours": "06:00-21:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Arundina Cibubur",
+      "city": "Cibubur",
+      "regency": "Jakarta Timur",
+      "address": "Ruko Cibubur Indah, Komplek Ruko Arundina, Jl. Lapangan Tembak, RT.2/RW.11, Cibubur, Ciracas, Jakarta Timur, DKI Jakarta 13720, Indonesia",
+      "place_id": "ChIJe-NHWaDtaS4R-n5d0AwXaQ0",
+      "rating": 4.4,
+      "review_count": 306,
+      "phone": "+62 817-0739-221",
+      "opening_hours": "07:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Kartini Depok",
+      "city": "Depok",
+      "regency": "Kota Depok",
+      "address": "Jl. Kartini No.18, RT.02/RW.2, Pancoran Mas, Kota Depok, Jawa Barat 16431, Indonesia",
+      "place_id": "ChIJz5u4cofpaS4RWWzH7X7JzGs",
+      "rating": 4.8,
+      "review_count": 83,
+      "phone": "+62 878-9414-3019",
+      "opening_hours": "24 jam",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Pondok Cina Depok",
+      "city": "Depok",
+      "regency": "Kota Depok",
+      "address": "Jl. Margonda Raya No.418, Pondok Cina, Beji, Kota Depok, Jawa Barat 16424, Indonesia",
+      "place_id": "ChIJTQ7lOgDtaS4RA2N0BFHYLIg",
+      "rating": 4.8,
+      "review_count": 914,
+      "phone": "+62 819-4422-2991",
+      "opening_hours": "24 jam",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan x Chigo x Flip Burger - Ruko Tole Iskandar",
+      "city": "Depok",
+      "regency": "Kota Depok",
+      "address": "Jl. Tole Iskandar, Mekar Jaya, Sukmajaya, Kota Depok, Jawa Barat 16415, Indonesia",
+      "place_id": "ChIJyR45AG_raS4RuMdZtR2eyfs",
+      "rating": 4.6,
+      "review_count": 387,
+      "phone": "+62 817-0739-152",
+      "opening_hours": "07:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Pancoran Mas Depok",
+      "city": "Depok",
+      "regency": "Kota Depok",
+      "address": "Jl. Raya Sawangan No.23C, Mampang, Pancoran Mas, Kota Depok, Jawa Barat 16433, Indonesia",
+      "place_id": "ChIJP9z7r5TpaS4R2FWpw0URg8c",
+      "rating": 4.8,
+      "review_count": 223,
+      "opening_hours": "24 jam",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Pahlawan Bogor",
+      "city": "Bogor",
+      "regency": "Kota Bogor",
+      "address": "Jl. Pahlawan No.150, Empang, Bogor Selatan, Kota Bogor, Jawa Barat 16132, Indonesia",
+      "place_id": "ChIJp537xT3FaS4RfE1qV3tJLRk",
+      "rating": 4.8,
+      "review_count": 186,
+      "phone": "+62 819-4421-8287",
+      "opening_hours": "08:00-22:00",
+      "source": "Google Maps business search"
+    },
+    {
+      "name": "Kopi Kenangan - Transyogi",
+      "city": "Gunung Putri",
+      "regency": "Kabupaten Bogor",
+      "address": "Jl. Transyogi Raya, Nagrak, Gunung Putri, Kabupaten Bogor, Jawa Barat 16967, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - SPBU Leuwinanggung",
+      "city": "Tapos",
+      "regency": "Kota Depok",
+      "address": "SPBU 34.169.37, Jl. Raya Leuwinanggung, Leuwinanggung, Tapos, Kota Depok, Jawa Barat 16456, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Parung",
+      "city": "Parung",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Parung, Jl. Raya Parung No.667, Parung, Kabupaten Bogor, Jawa Barat 16330, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Agung Podomoro Golf View Cimanggis",
+      "city": "Tapos",
+      "regency": "Kota Depok",
+      "address": "Podomoro Golf View, Jl. Raya Bojong Nangka, Bojong Nangka, Tapos, Kota Depok, Jawa Barat 16963, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - SPBU Pertamina Cilangkap",
+      "city": "Tapos",
+      "regency": "Kota Depok",
+      "address": "SPBU 34-16920 Cilangkap, Jl. Raya Bogor No.5, Cilangkap, Tapos, Kota Depok, Jawa Barat 16458, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Pondok Rajeg",
+      "city": "Cibinong",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Perum Galaxy Asri No.4, Pondok Rajeg, Cibinong, Kabupaten Bogor, Jawa Barat 16413, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Bosih Bekasi",
+      "city": "Cibitung",
+      "regency": "Kabupaten Bekasi",
+      "address": "Jl. Bosih Raya Cibitung Blok E7 No.1, Wanasari, Cibitung, Kabupaten Bekasi, Jawa Barat 17520, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - SPBU Pertamina Cibitung",
+      "city": "Cibitung",
+      "regency": "Kabupaten Bekasi",
+      "address": "SPBU Pertamina 34.17548, Jl. Raya B. Bosih Selang, Wanasari, Cibitung, Kabupaten Bekasi, Jawa Barat 17520, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Permata Cimanggis Depok",
+      "city": "Tapos",
+      "regency": "Kota Depok",
+      "address": "Ruko Permata Cimanggis Emerald Blok CC No.36, Jl. Raya Tapos, Cimpaeun, Tapos, Kota Depok, Jawa Barat 16459, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Cileungsi",
+      "city": "Cileungsi",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Cileungsi, Jl. Raya Cileungsi-Jonggol, Cileungsi Kidul, Kabupaten Bogor, Jawa Barat 16820, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Stasiun Citayam",
+      "city": "Citayam",
+      "regency": "Kota Depok",
+      "address": "Stasiun Citayam, Jl. Raya Citayam No.60, Bojong Pondok Terong, Cipayung, Kota Depok, Jawa Barat 16436, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Alfamidi Raga Jaya",
+      "city": "Bojonggede",
+      "regency": "Kabupaten Bogor",
+      "address": "Alfamidi Raga Jaya, Jl. Tugu Macan No.14, Ragajaya, Bojonggede, Kabupaten Bogor, Jawa Barat 16920, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Cikarang Utara (RE Martadinata listing)",
+      "city": "Cikarang Utara",
+      "regency": "Kabupaten Bekasi",
+      "address": "Jl. RE. Martadinata No.17, Karangbaru, Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Cikarang Festival",
+      "city": "Cikarang Selatan",
+      "regency": "Kabupaten Bekasi",
+      "address": "Ruko Cikarang Festival, Jl. Cibarusah Raya, Ruko Blok T08 Villa Mutiara, Sukadami, Cikarang Selatan, Kabupaten Bekasi, Jawa Barat 17532, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Karangasih",
+      "city": "Cikarang Utara",
+      "regency": "Kabupaten Bekasi",
+      "address": "Ruko Karangasih, Jl. Ki Hajar Dewantara, Karangasih, Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - RS Sentra Medika Cikarang",
+      "city": "Cikarang Utara",
+      "regency": "Kabupaten Bekasi",
+      "address": "RS Sentra Medika Cikarang, Lantai Dasar, Jl. Raya Industri, Pasir Gombong, Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "source": "GrabFood chain listing",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Waterpark Grand Depok City",
+      "city": "Depok",
+      "regency": "Kota Depok",
+      "address": "Ruko Waterpark Grand Depok City, Jl. Boulevard Grand Depok City Raya No.19, Tirtajaya, Sukmajaya, Kota Depok, Jawa Barat 16412, Indonesia",
+      "source": "CIMB Niaga outlet list",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Transmart Depok",
+      "city": "Depok",
+      "regency": "Kota Depok",
+      "address": "Transmart Depok, Ground Floor GF 19A, Jl. Dewi Sartika No.9, Pancoran Mas, Kota Depok, Jawa Barat 16430, Indonesia",
+      "source": "CIMB Niaga outlet list",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Jatiasih",
+      "city": "Jatiasih",
+      "regency": "Kota Bekasi",
+      "address": "Jl. Wibawa Mukti II, Jatiasih, Kota Bekasi, Jawa Barat 17423, Indonesia",
+      "source": "CIMB Niaga outlet list",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Deltamas",
+      "city": "Cikarang Pusat",
+      "regency": "Kabupaten Bekasi",
+      "address": "Ruko Palais de Paris A12, Deltamas, Kabupaten Bekasi, Jawa Barat 17530, Indonesia",
+      "source": "CIMB Niaga outlet list",
+      "verification_status": "directory_listing_only"
+    },
+    {
+      "name": "Kopi Kenangan - Ruko Kota Wisata",
+      "city": "Cileungsi",
+      "regency": "Kabupaten Bogor",
+      "address": "Ruko Kota Wisata, Ruko Madison SHC 1 No.39, Kabupaten Bogor, Jawa Barat, Indonesia",
+      "source": "Bank Mandiri outlet list",
+      "verification_status": "historical_directory_listing"
+    },
+    {
+      "name": "Kopi Kenangan - SPBU Buperta Cibubur",
+      "city": "Cibubur",
+      "regency": "Kabupaten Bogor",
+      "address": "SPBU Buperta Cibubur, Kabupaten Bogor, Jawa Barat, Indonesia",
+      "source": "Bank Mandiri outlet list",
+      "verification_status": "historical_directory_listing"
+    },
+    {
+      "name": "Kopi Kenangan - Cibinong City Mall",
+      "city": "Cibinong",
+      "regency": "Kabupaten Bogor",
+      "address": "Cibinong City Mall, First Floor, Kabupaten Bogor, Jawa Barat, Indonesia",
+      "source": "Bank Mandiri outlet list",
+      "verification_status": "historical_directory_listing"
+    },
+    {
+      "name": "Kopi Kenangan - The Park Sawangan",
+      "city": "Sawangan",
+      "regency": "Kota Depok",
+      "address": "The Park Sawangan, Lower Ground, Kota Depok, Jawa Barat, Indonesia",
+      "source": "Bank Mandiri outlet list",
+      "verification_status": "historical_directory_listing"
+    }
+  ]
+}

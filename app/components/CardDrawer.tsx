@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { PlusCircle, X } from "lucide-react";
-import { CartItem } from "../types/cart";
-import { getCart, removeFromCart } from "../utils/cart";
+
+import { ChevronLeft, PlusCircle, ShoppingBag, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { CartItem } from "../types/cart";
+import { BrandKey, brands } from "../types/products";
+import { getCart, removeFromCart } from "../utils/cart";
+import { createOrder } from "../lib/orders";
+import { CheckoutDetails, CheckoutPanel } from "./CheckoutPanel";
 
 export function CartDrawer({
   open,
@@ -12,8 +16,14 @@ export function CartDrawer({
   open: boolean;
   onClose: () => void;
 }) {
-  const [refresh, setRefresh] = useState(0);
+  const [, setRefresh] = useState(0);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   const cart: CartItem[] = open ? getCart() : [];
+
+  const handleClose = () => {
+    setCheckoutOpen(false);
+    onClose();
+  };
 
   const getOptionTotal = (item: any) => {
     if (!item.options) return 0;
@@ -23,7 +33,6 @@ export function CartDrawer({
     );
   };
 
-  // 🔥 LOCK SCROLL BACKGROUND
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -36,7 +45,6 @@ export function CartDrawer({
     };
   }, [open]);
 
-  // ===== PRICING =====
   const subtotalOriginal = cart.reduce((acc, item) => {
     const optionTotal = getOptionTotal(item);
     return acc + (item.price.original + optionTotal) * item.qty;
@@ -56,66 +64,105 @@ export function CartDrawer({
     cartId: item.cartId ?? `${item.id}-${index}`,
   }));
 
-  const generateWhatsAppMessage = (cart: any[], user: any) => {
+  const generateWhatsAppMessage = (
+    checkoutCart: CartItem[],
+    checkout: CheckoutDetails,
+    orderId: number,
+  ) => {
+    const itemsByBrand = checkoutCart.reduce<Record<string, CartItem[]>>(
+      (grouped, item) => {
+        const brand = item.brand || "others";
+        grouped[brand] = [...(grouped[brand] ?? []), item];
+        return grouped;
+      },
+      {},
+    );
+
     let text = `🧾 *INVOICE PESANAN - PROMOIN*\n`;
     text += `━━━━━━━━━━━━━━━━━━\n\n`;
+    text += `🆔 *No. Pesanan:* #${orderId}\n`;
+    text += `👤 *Nama:* ${checkout.name}\n\n`;
 
-    text += `👤 *Nama:* ${user.name}\n`;
-    text += `🏪 *Outlet:* ${user.outlet}\n\n`;
+    let orderSubtotal = 0;
 
-    text += `━━━━━━━━━━━━━━━━━━\n\n`;
+    Object.entries(itemsByBrand).forEach(([brandKey, items]) => {
+      const brand = brands.find((item) => item.id === brandKey);
+      const outlet = checkout.outlets[brandKey as BrandKey];
 
-    let grandTotal = 0;
-
-    cart.forEach((item) => {
-      const optionText = item.options
-        ?.map((o: any) => `${o.name}: ${o.value}`)
-        .join("\n  ");
-
-      const optionTotal =
-        item.options?.reduce(
-          (acc: number, o: any) => acc + (o.price || 0),
-          0,
-        ) || 0;
-
-      const base = item.price.original;
-      const selling = item.price.selling;
-      const final = selling + optionTotal;
-
-      const discount = base - selling;
-
-      const subtotal = final * item.qty;
-      grandTotal += subtotal;
-
-      text += `☕ *${item.brand || "Product"}*\n`;
+      text += `☕ *${brand?.name ?? brandKey.toUpperCase()}*\n`;
+      if (outlet) {
+        text += `🏪 *Outlet:* ${outlet.name}\n`;
+        if (outlet.address) text += `📍 ${outlet.address}\n`;
+      }
       text += `────────────────\n\n`;
 
-      text += `• ${item.name} x${item.qty}\n`;
-      text += `  Harga: Rp ${base.toLocaleString("id-ID")}\n`;
+      items.forEach((item) => {
+        const optionText = item.options
+          ?.map((option) => `${option.name}: ${option.value}`)
+          .join("\n  ");
+        const optionTotal =
+          item.options?.reduce(
+            (total, option) => total + (option.price || 0),
+            0,
+          ) || 0;
+        const unitPrice = item.price.selling + optionTotal;
+        const itemSubtotal = unitPrice * item.qty;
+        const discount = item.price.original - item.price.selling;
 
-      if (optionText) {
-        text += `  ${optionText}\n`;
-      }
+        orderSubtotal += itemSubtotal;
 
-      if (discount > 0) {
-        text += `  🔥 Promo → Rp ${final.toLocaleString("id-ID")}\n`;
-        text += `  Hemat: Rp ${discount.toLocaleString("id-ID")}\n`;
-      }
-
-      text += `\nSubtotal: Rp ${subtotal.toLocaleString("id-ID")}\n\n`;
+        text += `• ${item.name} x${item.qty}\n`;
+        if (optionText) text += `  ${optionText}\n`;
+        text += `  Harga: Rp ${unitPrice.toLocaleString("id-ID")}\n`;
+        if (discount > 0) {
+          text += `  Hemat: Rp ${(discount * item.qty).toLocaleString("id-ID")}\n`;
+        }
+        text += `  Subtotal: Rp ${itemSubtotal.toLocaleString("id-ID")}\n\n`;
+      });
     });
 
+    const checkoutTotal = orderSubtotal + adminFee;
+    text += `━━━━━━━━━━━━━━━━━━\n`;
+    text += `Subtotal: Rp ${orderSubtotal.toLocaleString("id-ID")}\n`;
+    text += `Fee admin: Rp ${adminFee.toLocaleString("id-ID")}\n`;
+    text += `💰 *TOTAL BAYAR: Rp ${checkoutTotal.toLocaleString("id-ID")}*\n\n`;
     text += `━━━━━━━━━━━━━━━━━━\n\n`;
-    text += `💰 *TOTAL BAYAR: Rp ${grandTotal.toLocaleString("id-ID")}*\n\n`;
-
-    text += `━━━━━━━━━━━━━━━━━━\n\n`;
-    text += `📌 *Note:*\n`;
+    text += `📌 *Catatan:*\n`;
     text += `1. Tunggu QR pengambilan\n`;
     text += `2. Bayar via QRIS\n`;
-    text += `3. Tanpa bukti pembayaran tidak diproses\n`;
+    text += `3. Pesanan diproses setelah pembayaran terverifikasi\n`;
 
     return encodeURIComponent(text);
   };
+
+  const handleCheckout = async (details: CheckoutDetails) => {
+    // Buka tab lebih dulu (masih dalam klik pengguna) agar tidak diblokir
+    // popup blocker, lalu arahkan ke WhatsApp setelah pesanan tercatat.
+    const popup = window.open("", "_blank");
+    if (popup) popup.opener = null;
+
+    try {
+      const { orderId } = await createOrder({
+        name: details.name,
+        items: cart,
+        outlets: details.outlets,
+      });
+
+      const message = generateWhatsAppMessage(cart, details, orderId);
+      const phone = "6281586298430";
+      const url = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+      if (popup) {
+        popup.location.href = url;
+      } else {
+        window.location.assign(url);
+      }
+    } catch (error) {
+      popup?.close();
+      throw error;
+    }
+  };
+
   const groupedCart = safeCart.reduce((acc: any, item) => {
     const brand = item.brand || "Others";
 
@@ -126,6 +173,7 @@ export function CartDrawer({
     acc[brand].push(item);
     return acc;
   }, {});
+
   useEffect(() => {
     const update = () => setRefresh((r) => r + 1);
     window.addEventListener("cart:update", update);
@@ -137,227 +185,271 @@ export function CartDrawer({
       className={`fixed inset-0 z-50 transition ${
         open ? "visible" : "invisible"
       }`}
+      aria-hidden={!open}
     >
-      {/* BACKDROP */}
       <div
-        onClick={onClose}
-        className={`absolute inset-0 bg-black/30 backdrop-blur-xs transition-opacity duration-300 ${
+        onClick={handleClose}
+        className={`absolute inset-0 bg-ink/40 backdrop-blur-sm transition-opacity duration-300 ${
           open ? "opacity-100" : "opacity-0"
         }`}
+        aria-hidden="true"
       />
 
-      {/* DRAWER */}
       <div
-        className={`absolute right-0 top-0 h-full w-full md:w-[420px] bg-white shadow-xl
-        flex flex-col
-        transition-transform duration-300 ${
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-drawer-title"
+        className={`absolute right-0 top-0 flex h-full w-full flex-col overflow-hidden bg-screen shadow-2xl transition-transform duration-300 md:w-[440px] md:rounded-l-[32px] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* HEADER */}
-        <div className="p-5 flex justify-between items-center border-b border-[#eee]">
-          <h2 className="font-semibold text-lg">Keranjang</h2>
-          <button onClick={onClose}>
-            <X />
+        {/* ===== TOP BAR ===== */}
+        <header className="flex shrink-0 items-center justify-between px-4 pb-3 pt-4">
+          <button
+            type="button"
+            onClick={handleClose}
+            className="grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Tutup keranjang"
+          >
+            <ChevronLeft size={20} strokeWidth={2} />
           </button>
-        </div>
+          <h2
+            id="cart-drawer-title"
+            className="text-base font-semibold tracking-[-0.01em] text-ink"
+          >
+            Keranjang
+          </h2>
+          <span className="size-11" aria-hidden="true" />
+        </header>
 
-        {/* ITEMS (SCROLL AREA) */}
-        <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+        {/* ===== ITEMS ===== */}
+        <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-4 pb-5 pt-2">
           {cart.length === 0 && (
-            <p className="text-sm text-gray-400">Cart is empty</p>
+            <div className="flex min-h-56 flex-col items-center justify-center rounded-[24px] bg-surface p-6 text-center shadow-card">
+              <span className="grid size-14 place-items-center rounded-full bg-primary-light text-primary-strong">
+                <ShoppingBag size={24} strokeWidth={1.8} />
+              </span>
+              <p className="mt-4 text-sm font-semibold text-ink">
+                Keranjang masih kosong
+              </p>
+              <p className="mt-1 text-xs text-muted">
+                Yuk pilih menu minuman favoritmu dulu.
+              </p>
+            </div>
           )}
 
-          {Object.entries(groupedCart).map(([brand, items]: any) => (
-            <div key={brand} className="space-y-3">
-              {/* 🔥 BRAND HEADER */}
-              <div className="flex items-center gap-2 mt-2">
-                <span className="text-sm font-bold text-gray-700">
-                  {brand.toUpperCase()}
-                </span>
-                <div className="flex-1 h-[1px] bg-gray-200" />
-              </div>
+          {Object.entries(groupedCart).map(([brand, items]: any) => {
+            const brandInfo = brands.find((b) => b.id === brand);
 
-              {/* 🔥 ITEMS */}
-              {items.map((item: any) => {
-                const discount = item.price.original > item.price.selling;
-                const optionTotal = getOptionTotal(item);
-                const itemTotal = (item.price.selling + optionTotal) * item.qty;
-                const finalOriginal = item.price.original + optionTotal;
+            return (
+              <section key={brand} className="space-y-3">
+                <div className="flex items-center gap-2.5 px-1">
+                  {brandInfo && (
+                    <span className="grid h-8 w-11 place-items-center rounded-lg bg-surface p-1 shadow-card">
+                      <img
+                        src={brandInfo.logo}
+                        alt=""
+                        className="max-h-full w-full object-contain"
+                      />
+                    </span>
+                  )}
+                  <h3 className="text-sm font-bold text-ink">
+                    {brandInfo?.name ?? brand.toUpperCase()}
+                  </h3>
+                  <span className="text-xs text-muted tabular-nums">
+                    · {items.length} item
+                  </span>
+                </div>
 
-                return (
-                  <div
-                    key={item.cartId}
-                    className="flex gap-3 items-start bg-gray-50 p-3 rounded-xl"
-                  >
-                    <img
-                      src={item.image}
-                      className="w-14 h-14 object-contain rounded-lg"
-                    />
+                {items.map((item: any) => {
+                  const discount = item.price.original > item.price.selling;
+                  const optionTotal = getOptionTotal(item);
+                  const itemTotal =
+                    (item.price.selling + optionTotal) * item.qty;
+                  const finalOriginal = item.price.original + optionTotal;
 
-                    <div className="flex-1">
-                      <p className="text-sm font-semibold leading-tight">
-                        {item.name}
-                      </p>
+                  return (
+                    <article
+                      key={item.cartId}
+                      className="flex gap-3 rounded-[22px] bg-surface p-2.5 shadow-card"
+                    >
+                      <div className="size-[84px] shrink-0 overflow-hidden rounded-2xl bg-surface-alt">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
 
-                      <p className="text-[11px] text-gray-400 mt-1 flex flex-wrap gap-x-2">
-                        {item.options?.length > 0
-                          ? item.options.map((opt: any, i: number) => (
-                              <span key={i}>
-                                {opt.value}
-                                {i !== item.options.length - 1 && " • "}
+                      <div className="flex min-w-0 flex-1 flex-col">
+                        <div className="flex items-start justify-between gap-2">
+                          <h4 className="line-clamp-2 text-[13px] font-semibold leading-[18px] text-ink">
+                            {item.name}
+                          </h4>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              removeFromCart(item.cartId);
+                              setRefresh((r) => r + 1);
+                            }}
+                            className="-mr-0.5 -mt-0.5 grid size-8 shrink-0 place-items-center rounded-full text-muted transition hover:bg-red-50 hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
+                            aria-label={`Hapus ${item.name} dari keranjang`}
+                          >
+                            <Trash2 size={16} strokeWidth={1.8} />
+                          </button>
+                        </div>
+
+                        <p className="mt-0.5 line-clamp-1 text-[11px] leading-4 text-muted">
+                          {item.options?.length > 0
+                            ? item.options.map((opt: any, i: number) => (
+                                <span key={i}>
+                                  {opt.value}
+                                  {i !== item.options.length - 1 && " • "}
+                                </span>
+                              ))
+                            : "No options"}
+                        </p>
+
+                        <div className="mt-auto flex items-end justify-between gap-2 pt-2">
+                          <div className="flex min-w-0 flex-col tabular-nums">
+                            {discount && (
+                              <span className="text-[10px] leading-3 text-muted line-through">
+                                Rp {finalOriginal.toLocaleString("id-ID")}
                               </span>
-                            ))
-                          : "No options"}
-                      </p>
+                            )}
+                            <span className="text-sm font-bold text-ink">
+                              Rp {itemTotal.toLocaleString("id-ID")}
+                            </span>
+                          </div>
 
-                      <div className="mt-1 flex items-center gap-2">
-                        <span className="text-green-600 font-bold text-[16px]">
-                          Rp {itemTotal.toLocaleString("id-ID")}
-                        </span>
+                          <div className="flex shrink-0 items-center rounded-xl border border-border-subtle bg-surface p-0.5 tabular-nums">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated = cart.map((c) =>
+                                  c.cartId === item.cartId
+                                    ? { ...c, qty: Math.max(1, c.qty - 1) }
+                                    : c,
+                                );
+                                localStorage.setItem(
+                                  "cart",
+                                  JSON.stringify(updated),
+                                );
+                                setRefresh((r) => r + 1);
+                              }}
+                              className="grid size-7 place-items-center rounded-lg text-sm font-semibold text-secondary transition hover:bg-surface-alt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                              aria-label={`Kurangi jumlah ${item.name}`}
+                            >
+                              −
+                            </button>
 
-                        {discount && (
-                          <span className="text-gray-400 text-xs line-through">
-                            Rp {finalOriginal.toLocaleString("id-ID")}
-                          </span>
-                        )}
+                            <span className="w-7 text-center text-xs font-bold text-ink">
+                              {item.qty}
+                            </span>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated = cart.map((c) =>
+                                  c.cartId === item.cartId
+                                    ? { ...c, qty: c.qty + 1 }
+                                    : c,
+                                );
+                                localStorage.setItem(
+                                  "cart",
+                                  JSON.stringify(updated),
+                                );
+                                setRefresh((r) => r + 1);
+                              }}
+                              className="grid size-7 place-items-center rounded-lg bg-ink text-sm font-semibold text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                              aria-label={`Tambah jumlah ${item.name}`}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </article>
+                  );
+                })}
+              </section>
+            );
+          })}
 
-                    {/* ACTION */}
-                    <div className="flex flex-col items-end gap-2">
-                      <div className="flex items-center border rounded-lg overflow-hidden">
-                        <button
-                          onClick={() => {
-                            const updated = cart.map((c) =>
-                              c.cartId === item.cartId
-                                ? { ...c, qty: Math.max(1, c.qty - 1) }
-                                : c,
-                            );
-                            localStorage.setItem(
-                              "cart",
-                              JSON.stringify(updated),
-                            );
-                            setRefresh((r) => r + 1);
-                          }}
-                          className="px-2 text-sm"
-                        >
-                          -
-                        </button>
-
-                        <span className="px-2 text-xs">{item.qty}</span>
-
-                        <button
-                          onClick={() => {
-                            const updated = cart.map((c) =>
-                              c.cartId === item.cartId
-                                ? { ...c, qty: c.qty + 1 }
-                                : c,
-                            );
-                            localStorage.setItem(
-                              "cart",
-                              JSON.stringify(updated),
-                            );
-                            setRefresh((r) => r + 1);
-                          }}
-                          className="px-2 text-sm"
-                        >
-                          +
-                        </button>
-                      </div>
-
-                      <button
-                        onClick={() => {
-                          removeFromCart(item.cartId);
-                          setRefresh((r) => r + 1);
-                        }}
-                        className="text-red-500 text-[11px] hover:text-red-600 font-bold"
-                      >
-                        Hapus
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ))}
           <a
             href="#brand"
             onClick={() => {
-              onClose();
+              handleClose();
             }}
-            className="
-            w-[105px]
-    flex items-center justify-end gap-2
-    px-3 py-2
-    rounded-full
-    border border-grey-600
-    text-xs font-medium
-    hover:bg-green-600
-    hover:text-white
-    cursor-pointer
-    transition
-  "
+            className="flex h-12 w-full shrink-0 items-center justify-center gap-2 rounded-full border-[1.5px] border-dashed border-ink/20 text-sm font-semibold text-ink transition hover:border-primary hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
-            <span className="rounded-full">
-              <PlusCircle size={15} />
-            </span>
-            Add More
+            <PlusCircle size={17} strokeWidth={1.9} />
+            Tambah menu lain
           </a>
         </div>
 
-        {/* 🔥 STICKY FOOTER */}
-        <div className="sticky bottom-0 bg-white border-t border-[#eee] p-5 space-y-2 text-sm shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
-          <div className="flex justify-between text-gray-400">
-            <span> </span>
-            <span className="line-through">
-              Rp {subtotalOriginal.toLocaleString("id-ID")}
-            </span>
-          </div>
-          {totalSavings > 0 && (
-            <div className="flex justify-between font-bold text-green-500">
-              <span>Diskon</span>
-              <span>-Rp {totalSavings.toLocaleString("id-ID")}</span>
+        {/* ===== SUMMARY ===== */}
+        <footer className="shrink-0 rounded-t-[28px] bg-surface px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5 text-xs text-secondary shadow-lift tabular-nums">
+          <div className="space-y-2">
+            <div className="flex justify-between text-muted">
+              <span>Harga normal</span>
+              <span className="line-through">
+                Rp {subtotalOriginal.toLocaleString("id-ID")}
+              </span>
             </div>
-          )}
+            {totalSavings > 0 && (
+              <div className="flex justify-between font-semibold text-primary-strong">
+                <span>Diskon</span>
+                <span>-Rp {totalSavings.toLocaleString("id-ID")}</span>
+              </div>
+            )}
 
-          <div className="flex justify-between font-medium">
-            <span>Subtotal</span>
-            <span>Rp {subtotalPromo.toLocaleString("id-ID")}</span>
+            <div className="flex justify-between">
+              <span>Subtotal</span>
+              <span className="font-medium text-ink">
+                Rp {subtotalPromo.toLocaleString("id-ID")}
+              </span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Fee Admin</span>
+              <span className="font-medium text-ink">
+                Rp {adminFee.toLocaleString("id-ID")}
+              </span>
+            </div>
           </div>
 
-          <div className="flex justify-between">
-            <span>Fee Admin</span>
-            <span>Rp {adminFee.toLocaleString("id-ID")}</span>
+          <div className="mt-4 flex items-center justify-between gap-3 rounded-full bg-surface-alt py-2 pl-5 pr-2">
+            <div className="min-w-0">
+              <p className="text-[11px] leading-4 text-muted">Total</p>
+              <p className="truncate text-lg font-bold leading-6 text-ink">
+                Rp {grandTotal.toLocaleString("id-ID")}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              disabled={cart.length === 0}
+              onClick={() => setCheckoutOpen(true)}
+              className={`h-12 shrink-0 rounded-full px-5 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 ${
+                cart.length > 0
+                  ? "bg-primary text-on-primary shadow-primary hover:bg-primary-dark"
+                  : "cursor-not-allowed bg-border-subtle text-muted"
+              }`}
+            >
+              {cart.length > 0 ? "Checkout" : "Keranjang kosong"}
+            </button>
           </div>
+        </footer>
 
-          <div className="border-t border-dashed my-2"></div>
-
-          <div className="flex justify-between items-center text-lg font-bold">
-            <span>Total</span>
-            <span className="font-bold">
-              Rp {grandTotal.toLocaleString("id-ID")}
-            </span>
-          </div>
-
-          <button
-            onClick={() => {
-              const message = generateWhatsAppMessage(cart, {
-                name: "test",
-                outlet: "A.H Nasution",
-              });
-
-              const phone = "6281586298430";
-
-              const url = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
-
-              window.open(url, "_blank");
-            }}
-            className="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition"
-          >
-            Checkout via WhatsApp
-          </button>
-        </div>
+        {checkoutOpen && cart.length > 0 && (
+          <CheckoutPanel
+            cart={cart}
+            total={grandTotal}
+            onBack={() => setCheckoutOpen(false)}
+            onCheckout={handleCheckout}
+          />
+        )}
       </div>
     </div>
   );

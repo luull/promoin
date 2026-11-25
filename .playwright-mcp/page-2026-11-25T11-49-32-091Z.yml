@@ -1,0 +1,36 @@
+- generic [active] [ref=f13e1]:
+  - main [ref=f13e2]:
+    - generic [ref=f13e4]:
+      - generic [ref=f13e5]:
+        - paragraph [ref=f13e6]: NIKMATI
+        - heading "Hemat 30% ++ untuk Setiap Pembelian Kopi." [level=1] [ref=f13e7]
+        - link "Belanja" [ref=f13e8] [cursor=pointer]:
+          - /url: "#brand"
+          - text: Belanja
+          - generic [aria-hidden] [ref=f13e9]: →
+      - button "Buka keranjang" [ref=f13e10]
+      - img "Pilihan minuman kopi Promoin" [ref=f13e17]
+    - region "Mau pesan dari mana?" [ref=f13e19]:
+      - generic [ref=f13e20]:
+        - generic [ref=f13e21]:
+          - paragraph [ref=f13e22]: Brand pilihan
+          - heading "Mau pesan dari mana?" [level=2] [ref=f13e23]
+        - paragraph [ref=f13e24]: Pilih satu brand
+      - generic [ref=f13e25]:
+        - button "Logo Fore Coffee Fore Coffee" [pressed] [ref=f13e26]:
+          - img "Logo Fore Coffee" [ref=f13e27]
+          - generic [ref=f13e28]: Fore Coffee
+        - button "Logo Kopi Kenangan Kopi Kenangan" [ref=f13e29]:
+          - img "Logo Kopi Kenangan" [ref=f13e30]
+          - generic [ref=f13e31]: Kopi Kenangan
+        - button "Logo Tomoro Coffee Tomoro Coffee" [ref=f13e32]:
+          - img "Logo Tomoro Coffee" [ref=f13e33]
+          - generic [ref=f13e34]: Tomoro Coffee
+        - button "Logo Starbucks Starbucks" [ref=f13e35]:
+          - img "Logo Starbucks" [ref=f13e36]
+          - generic [ref=f13e37]: Starbucks
+    - generic [ref=f13e39]:
+      - button "All Category" [pressed] [ref=f13e41]
+      - textbox "Cari produk" [ref=f13e43]:
+        - /placeholder: Cari menu favorit...
+  - button "Open Next.js Dev Tools" [ref=f13e90] [cursor=pointer]

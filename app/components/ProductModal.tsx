@@ -1,17 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { useEffect, useState } from "react";
 import {
-  Coffee,
-  Snowflake,
-  Droplet,
-  Sparkles,
-  Milk,
   Candy,
+  ChevronLeft,
+  Coffee,
   CupSoda,
-  X,
+  Droplet,
+  Milk,
+  ShoppingBag,
+  Snowflake,
+  Sparkles,
+  TicketPercent,
 } from "lucide-react";
-import { Product } from "../types/products";
+import { Product, brands } from "../types/products";
+import { getProductOptions } from "../lib/catalog";
 import { addToCart } from "../utils/cart";
 
 export function ProductModal({
@@ -31,12 +35,11 @@ export function ProductModal({
   const [selectedOptions, setSelectedOptions] = useState<Record<string, any>>(
     {},
   );
-  // 🔥 SELECT HANDLER
+
   const handleSelect = (opt: any, value: any) => {
     setSelectedOptions((prev) => {
       const current = prev[opt.name];
 
-      // 🔥 RADIO (1 doang per section)
       if (opt.type === "radio") {
         return {
           ...prev,
@@ -44,16 +47,13 @@ export function ProductModal({
         };
       }
 
-      // 🔥 CHECKBOX (multi select)
       let updated = current ? [...current] : [];
 
       const exists = updated.find((v: any) => v.value === value.value);
 
       if (exists) {
-        // remove kalau udah ada
         updated = updated.filter((v: any) => v.value !== value.value);
       } else {
-        // add kalau belum & masih boleh
         if (updated.length < (opt.max_selections || 999)) {
           updated.push(value);
         }
@@ -65,6 +65,7 @@ export function ProductModal({
       };
     });
   };
+
   const formatOptionsForCart = () => {
     const result: any[] = [];
 
@@ -90,6 +91,7 @@ export function ProductModal({
 
     return result;
   };
+
   const getTotalPrice = () => {
     let total = product.price.selling;
 
@@ -105,10 +107,12 @@ export function ProductModal({
 
     return total * qty;
   };
+
   const handleClose = () => {
     setShow(false);
     setTimeout(onClose, 200);
   };
+
   const isValid = () => {
     for (const opt of options) {
       if (opt.is_required) {
@@ -122,17 +126,12 @@ export function ProductModal({
     return true;
   };
 
-  // 🔥 FETCH OPTIONS
   useEffect(() => {
     const fetchOptions = async () => {
       try {
         setLoadingOptions(true);
 
-        const res = await fetch(
-          `http://127.0.0.1:8000/products/${product.product_id}/options`,
-        );
-
-        const data = await res.json();
+        const data = await getProductOptions(product.product_id);
         setOptions(data);
       } catch (err) {
         console.error("Options error:", err);
@@ -160,162 +159,305 @@ export function ProductModal({
 
     return <Coffee size={16} />;
   };
+
   useEffect(() => {
-    // disable scroll
     document.body.style.overflow = "hidden";
 
     return () => {
-      // balikin scroll pas modal ditutup
       document.body.style.overflow = "auto";
     };
   }, []);
 
+  // presentational only
+  const brandInfo = brands.find((b) => b.id === product.brand);
+  const hasDiscount = product.price.original > product.price.selling;
+  const unitSaving = hasDiscount
+    ? product.price.original - product.price.selling
+    : 0;
+  const discountPercent = hasDiscount
+    ? Math.round((unitSaving / product.price.original) * 100)
+    : 0;
+  const canAdd = isValid();
+
   return (
     <div
       onClick={handleClose}
-      className={`fixed inset-0 z-50 flex items-center justify-center px-4
-      bg-black/40 backdrop-blur-xs transition-opacity duration-200
-      ${show ? "opacity-100" : "opacity-0"}`}
+      className={`fixed inset-0 z-50 flex items-stretch justify-center bg-ink/40 backdrop-blur-sm transition-opacity duration-200 md:items-center md:p-6 ${
+        show ? "opacity-100" : "opacity-0"
+      }`}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`bg-white w-full max-w-4xl rounded-3xl shadow-xl
-        transition-all duration-300
-        ${show ? "scale-100 opacity-100" : "scale-95 opacity-0"}
-        flex flex-col md:flex-row overflow-hidden`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-modal-title"
+        aria-describedby="product-modal-description"
+        aria-busy={loadingOptions}
+        className={`relative flex h-dvh w-full flex-col overflow-hidden bg-screen transition-all duration-200 md:h-[min(760px,92dvh)] md:max-w-4xl md:rounded-[32px] md:shadow-2xl ${
+          show ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        }`}
       >
-        {/* IMAGE */}
-        <div className="md:w-1/2">
-          <img src={product.image} className="w-full h-full object-cover" />
-        </div>
-
-        {/* CONTENT */}
-        <div className="flex-1 p-6 relative overflow-y-hide max-h-[90vh]">
-          {/* CLOSE */}
+        {/* ===== TOP BAR ===== */}
+        <header className="flex shrink-0 items-center justify-between px-4 pb-2 pt-4 md:px-6 md:pt-5">
           <button
+            type="button"
             onClick={handleClose}
-            className="absolute top-4 right-4 text-gray-500 hover:text-black"
+            className="grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Kembali"
           >
-            <X size={20} />
+            <ChevronLeft size={20} strokeWidth={2} />
           </button>
+          <p className="text-base font-semibold tracking-[-0.01em] text-ink">
+            Detail
+          </p>
+          <span className="size-11" aria-hidden="true" />
+        </header>
 
-          <div className="flex-1 p-6 flex flex-col max-h-[90vh]">
-            {/* 🔥 HEADER (TIDAK SCROLL) */}
-            <div>
-              {/* INFO */}
-              <div className="text-sm bg-green-100 py-1 px-3 text-green-600 rounded w-fit">
-                {product.category}
+        {/* ===== BODY ===== */}
+        <div className="min-h-0 flex-1 overflow-y-auto md:grid md:grid-cols-2 md:grid-rows-[minmax(0,1fr)] md:gap-6 md:overflow-hidden md:px-6 md:pb-6">
+          {/* IMAGE */}
+          <div className="px-4 pt-2 md:h-full md:px-0 md:pt-0">
+            <div className="relative aspect-square w-full overflow-hidden rounded-[28px] bg-surface-alt md:aspect-auto md:h-full">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* INFO */}
+          <div className="px-4 pb-6 pt-5 md:overflow-y-auto md:px-1 md:pb-28 md:pt-1">
+            <p className="text-xs font-medium text-muted">{product.category}</p>
+
+            <h2
+              id="product-modal-title"
+              className="mt-1 text-xl font-bold leading-7 tracking-[-0.02em] text-ink"
+            >
+              {product.name}
+            </h2>
+
+            <div className="mt-1.5 flex flex-wrap items-baseline gap-2 tabular-nums">
+              <span className="text-lg font-bold text-ink">
+                Rp {product.price.selling.toLocaleString("id-ID")}
+              </span>
+
+              {hasDiscount && (
+                <span className="text-xs text-muted line-through">
+                  Rp {product.price.original.toLocaleString("id-ID")}
+                </span>
+              )}
+            </div>
+
+            {/* PROMO TICKET */}
+            {hasDiscount ? (
+              <div className="relative mt-4 flex overflow-hidden rounded-[22px] bg-primary-light">
+                {/* discount stub */}
+                <div className="flex w-[84px] shrink-0 flex-col items-center justify-center bg-primary py-3 text-on-primary">
+                  <TicketPercent size={18} strokeWidth={2} aria-hidden="true" />
+                  <span className="mt-1 text-[22px] font-extrabold leading-7 tracking-[-0.02em] tabular-nums">
+                    {discountPercent}%
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.16em]">
+                    Off
+                  </span>
+                </div>
+
+                {/* perforation */}
+                <div
+                  className="relative w-0 border-l-2 border-dashed border-primary-dark/40"
+                  aria-hidden="true"
+                >
+                  <span className="absolute -left-[9px] -top-2 size-4 rounded-full bg-screen" />
+                  <span className="absolute -bottom-2 -left-[9px] size-4 rounded-full bg-screen" />
+                </div>
+
+                {/* savings detail */}
+                <div className="flex min-w-0 flex-1 items-center justify-between gap-2 py-3 pl-4 pr-3">
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-semibold text-primary-strong">
+                      Kamu hemat
+                    </p>
+                    <p className="text-lg font-extrabold leading-6 tracking-[-0.01em] text-ink tabular-nums">
+                      Rp {(unitSaving * qty).toLocaleString("id-ID")}
+                    </p>
+                    <p className="truncate text-[11px] text-secondary tabular-nums">
+                      {qty > 1
+                        ? `${qty} item × Rp ${unitSaving.toLocaleString("id-ID")}`
+                        : `dari harga normal Rp ${product.price.original.toLocaleString("id-ID")}`}
+                    </p>
+                  </div>
+
+                  {brandInfo && (
+                    <span className="grid h-10 w-12 shrink-0 place-items-center rounded-xl bg-surface p-1.5">
+                      <img
+                        src={brandInfo.logo}
+                        alt={brandInfo.name}
+                        className="max-h-full w-full object-contain"
+                      />
+                    </span>
+                  )}
+                </div>
               </div>
+            ) : (
+              brandInfo && (
+                <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-surface py-1.5 pl-1.5 pr-3.5 shadow-card">
+                  <span className="grid h-7 w-9 place-items-center rounded-full bg-surface-alt p-1">
+                    <img
+                      src={brandInfo.logo}
+                      alt=""
+                      className="max-h-full w-full object-contain"
+                    />
+                  </span>
+                  <span className="text-xs font-semibold text-ink">
+                    Menu {brandInfo.name}
+                  </span>
+                </div>
+              )
+            )}
 
-              <h2 className="text-xl font-bold mt-2">{product.name}</h2>
+            {/* OPTIONS */}
+            {loadingOptions && options.length === 0 && (
+              <div className="mt-6 space-y-3" aria-hidden="true">
+                <div className="h-3 w-24 animate-pulse rounded-full bg-surface-alt" />
+                <div className="flex gap-2">
+                  <div className="h-10 w-16 animate-pulse rounded-xl bg-surface-alt" />
+                  <div className="h-10 w-20 animate-pulse rounded-xl bg-surface-alt" />
+                  <div className="h-10 w-16 animate-pulse rounded-xl bg-surface-alt" />
+                </div>
+              </div>
+            )}
 
-              <p className="text-xs text-gray-400 line-clamp-3">
+            {options.map((opt, index) => (
+              <div key={`${opt.name}-${opt.value}-${index}`} className="mt-5">
+                <div className="mb-2.5 flex items-center justify-between gap-3">
+                  <p className="flex min-w-0 items-center gap-1.5 text-xs font-medium text-secondary">
+                    <span className="shrink-0 text-muted">
+                      {getOptionIcon(opt.name)}
+                    </span>
+                    <span className="truncate">{opt.name}</span>
+                  </p>
+                  <span
+                    className={`shrink-0 text-[10px] font-semibold uppercase tracking-wide ${
+                      opt.is_required ? "text-primary-strong" : "text-muted"
+                    }`}
+                  >
+                    {opt.is_required ? "Required" : "Optional"}
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {opt.values?.map((v: any) => {
+                    const selected = selectedOptions[opt.name];
+
+                    const isSelected =
+                      opt.type === "radio"
+                        ? selected?.value === v.value
+                        : selected?.some((x: any) => x.value === v.value);
+
+                    return (
+                      <button
+                        key={`${opt.option_id}-${v.value}`}
+                        type="button"
+                        onClick={() => handleSelect(opt, v)}
+                        role={opt.type === "radio" ? "radio" : "checkbox"}
+                        aria-checked={!!isSelected}
+                        className={`flex min-h-10 flex-col items-start justify-center rounded-xl px-3.5 py-2 text-left text-xs transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 ${
+                          isSelected
+                            ? "bg-primary font-bold text-on-primary shadow-primary"
+                            : "bg-surface-alt font-medium text-ink hover:bg-[#e8e8e8]"
+                        }`}
+                      >
+                        <span>{v.value}</span>
+                        {v.price > 0 && (
+                          <span
+                            className={`mt-0.5 text-[10px] tabular-nums ${
+                              isSelected
+                                ? "font-semibold text-ink/70"
+                                : "text-muted"
+                            }`}
+                          >
+                            +Rp {v.price.toLocaleString("id-ID")}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+
+            {/* QTY */}
+            <div className="mt-6 flex items-center justify-between gap-4">
+              <p className="text-xs font-medium text-secondary">Jumlah</p>
+              <div className="flex items-center rounded-xl border border-border-subtle bg-surface p-1 tabular-nums">
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => Math.max(1, q - 1))}
+                  className="grid size-8 place-items-center rounded-lg text-base font-semibold text-secondary transition hover:bg-surface-alt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="Kurangi jumlah"
+                >
+                  −
+                </button>
+                <span
+                  className="w-9 text-center text-sm font-bold text-ink"
+                  aria-live="polite"
+                >
+                  {qty}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => q + 1)}
+                  className="grid size-8 place-items-center rounded-lg bg-ink text-base font-semibold text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="Tambah jumlah"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            {/* DESCRIPTION */}
+            <div className="mt-6">
+              <p className="text-xs font-medium text-secondary">Deskripsi</p>
+              <p
+                id="product-modal-description"
+                className="mt-1.5 text-[13px] leading-5 text-secondary"
+              >
                 {product.desc}
               </p>
+            </div>
+          </div>
+        </div>
 
-              {/* PRICE */}
-              <div className="mt-2 flex items-center gap-2">
-                <span className="text-green-600 font-bold text-xl">
-                  Rp {product.price.selling.toLocaleString("id-ID")}
-                </span>
-
-                {product.price.original > product.price.selling && (
-                  <span className="text-gray-400 line-through text-sm">
-                    Rp {product.price.original.toLocaleString("id-ID")}
-                  </span>
-                )}
-              </div>
+        {/* ===== BOTTOM BAR ===== */}
+        <div className="shrink-0 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2 md:absolute md:bottom-6 md:right-6 md:w-[calc(50%-36px)] md:p-0">
+          <div className="flex items-center justify-between gap-3 rounded-full bg-surface py-2 pl-6 pr-2 shadow-float">
+            <div className="min-w-0">
+              <p className="text-[11px] leading-4 text-muted">Total harga</p>
+              <p className="truncate text-lg font-bold leading-6 text-ink tabular-nums">
+                Rp {getTotalPrice().toLocaleString("id-ID")}
+              </p>
             </div>
 
-            {/* 🔥 OPTIONS (SCROLLABLE ONLY) */}
-            <div className="flex-1 overflow-y-auto mt-4 pr-1">
-              {options.map((opt) => (
-                <div key={`${opt.id}-${opt.name}`} className="mt-5">
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="text-gray-600">
-                        {getOptionIcon(opt.name)}
-                      </div>
-                      <p className="font-semibold text-sm">{opt.name}</p>
-                    </div>
-                    <span className="text-xs text-gray-400">
-                      {opt.is_required ? "Required" : "Optional"}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {opt.values?.map((v: any) => {
-                      const selected = selectedOptions[opt.name];
-
-                      const isSelected =
-                        opt.type === "radio"
-                          ? selected?.value === v.value
-                          : selected?.some((x: any) => x.value === v.value);
-
-                      return (
-                        <div
-                          key={`${opt.id}-${v.value}`}
-                          onClick={() => handleSelect(opt, v)}
-                          className={`
-                  border rounded-xl p-2 cursor-pointer text-xs transition
-                  ${
-                    isSelected
-                      ? "border-green-600 bg-green-50"
-                      : "border-gray-300 hover:bg-gray-100"
-                  }
-                `}
-                        >
-                          <div className="flex justify-between space-x-3 items-center font-medium">
-                            <span>{v.value}</span>
-                            <span className="text-gray-500 text-xs">
-                              +Rp {v.price.toLocaleString("id-ID")}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* 🔥 FOOTER (TIDAK SCROLL) */}
-            <div className="my-4">
-              {/* QTY */}
-              <div className="mb-4 flex items-center justify-between">
-                <div className="flex items-center gap-3 border rounded-lg">
-                  <button
-                    onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    className="hover:bg-gray-200 w-10 h-10 cursor-pointer rounded-l-lg"
-                  >
-                    -
-                  </button>
-                  <span>{qty}</span>
-                  <button
-                    onClick={() => setQty((q) => q + 1)}
-                    className="hover:bg-gray-200 w-10 h-10 cursor-pointer rounded-r-lg"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <button
-                disabled={!isValid()}
-                onClick={() => {
-                  addToCart(
-                    {
-                      ...product,
-                      options: formatOptionsForCart(),
-                    },
-                    qty,
-                  );
-                  onSuccess?.();
-                }}
-                className="w-full bg-green-600 disabled:bg-gray-400 text-white py-3 rounded-xl font-semibold"
-              >
-                Add to Cart • Rp {getTotalPrice().toLocaleString("id-ID")}
-              </button>
-            </div>
+            <button
+              type="button"
+              disabled={!isValid()}
+              onClick={() => {
+                addToCart(
+                  {
+                    ...product,
+                    options: formatOptionsForCart(),
+                  },
+                  qty,
+                );
+                onSuccess?.();
+              }}
+              className="flex h-12 shrink-0 items-center gap-2 rounded-full bg-primary px-5 text-sm font-bold text-on-primary shadow-primary transition hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-surface-alt disabled:text-muted disabled:shadow-none"
+              title={canAdd ? undefined : "Lengkapi pilihan yang wajib"}
+            >
+              <ShoppingBag size={18} strokeWidth={2} />
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

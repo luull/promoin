@@ -35,6 +35,15 @@ export const brands = [
     button: "bg-green-600 text-white",
     border: "border-green-500",
   },
+  {
+    id: "chagee",
+    name: "Chagee",
+    tagline: "Everyday Fresh Coffee",
+    logo: "/logos/chagee.png",
+    bg: "bg-green-200",
+    button: "bg-green-600 text-white",
+    border: "border-green-500",
+  },
 ];
 
 export interface Product {
@@ -54,4 +63,20 @@ export interface Product {
   fields_format: string;
 }
 
-export type BrandKey = "fore" | "kopken" | "tomoro" | "starbuck";
+export interface ProductOptionValue {
+  value: string;
+  price: number;
+  display_order: number;
+}
+
+export interface ProductOption {
+  option_id: string;
+  name: string;
+  type: string;
+  is_required: boolean;
+  max_selections: number | null;
+  display_order: number;
+  values: ProductOptionValue[];
+}
+
+export type BrandKey = "fore" | "kopken" | "tomoro" | "starbuck" | "chagee";
