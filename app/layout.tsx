@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -7,6 +7,16 @@ const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
   display: "swap",
 });
+
+// Lebar halaman selalu dikunci ke lebar layar HP. Tanpa maximumScale,
+// Safari iPhone memperbesar halaman saat kolom isian disentuh sehingga
+// tampilan melebihi layar, dan touch-pan-y di drawer membuat halaman
+// tidak bisa digeser atau dikecilkan lagi.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Promok - Cari Promo & Diskon Semua Brand",
