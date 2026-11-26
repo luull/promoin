@@ -5,7 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   LoaderCircle,
-  MessageCircle,
+  QrCode,
   ShieldCheck,
   Store,
 } from "lucide-react";
@@ -73,7 +73,7 @@ export function CheckoutPanel({
     setSubmitting(true);
 
     try {
-      // Dipanggil sinkron di event submit agar tab WhatsApp tidak diblokir browser.
+      // Mencatat pesanan lalu membuat QRIS untuk langkah pembayaran.
       await onCheckout({
         name: name.trim(),
         outlets: selectedOutlets,
@@ -110,7 +110,7 @@ export function CheckoutPanel({
           >
             Detail pengambilan
           </h2>
-          <p className="text-[11px] font-medium text-muted">Langkah 2 dari 2</p>
+          <p className="text-[11px] font-medium text-muted">Langkah 2 dari 3</p>
         </div>
         <span className="size-11" aria-hidden="true" />
       </header>
@@ -306,7 +306,7 @@ export function CheckoutPanel({
                 </>
               ) : (
                 <>
-                  <MessageCircle size={18} strokeWidth={2} /> WhatsApp
+                  <QrCode size={18} strokeWidth={2} /> Bayar
                 </>
               )}
             </button>

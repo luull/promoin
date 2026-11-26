@@ -8,6 +8,7 @@ import { BrandKey, brands } from "../types/products";
 import { getCart, removeFromCart } from "../utils/cart";
 import { createOrder } from "../lib/orders";
 import { CheckoutDetails, CheckoutPanel } from "./CheckoutPanel";
+import { PaymentInfo, PaymentPanel } from "./PaymentPanel";
 
 export function CartDrawer({
   open,
@@ -18,10 +19,12 @@ export function CartDrawer({
 }) {
   const [, setRefresh] = useState(0);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [payment, setPayment] = useState<PaymentInfo | null>(null);
   const cart: CartItem[] = open ? getCart() : [];
 
   const handleClose = () => {
     setCheckoutOpen(false);
+    setPayment(null);
     onClose();
   };
 
@@ -142,31 +145,31 @@ export function CartDrawer({
   };
 
   const handleCheckout = async (details: CheckoutDetails) => {
-    // Buka tab lebih dulu (masih dalam klik pengguna) agar tidak diblokir
-    // popup blocker, lalu arahkan ke WhatsApp setelah pesanan tercatat.
-    const popup = window.open("", "_blank");
-    if (popup) popup.opener = null;
+    const { orderId, total } = await createOrder({
+      name: details.name,
+      items: cart,
+      outlets: details.outlets,
+    });
 
+    const message = generateWhatsAppMessage(cart, details, orderId);
+    const phone = "6281586298430";
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+    // QRIS dibuat setelah pesanan tercatat, memakai total dari database.
+    // Library QR baru dimuat saat pengguna akan membayar.
+    let qrImage: string | null = null;
     try {
-      const { orderId } = await createOrder({
-        name: details.name,
-        items: cart,
-        outlets: details.outlets,
-      });
-
-      const message = generateWhatsAppMessage(cart, details, orderId);
-      const phone = "6281586298430";
-      const url = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
-
-      if (popup) {
-        popup.location.href = url;
-      } else {
-        window.location.assign(url);
-      }
+      const { generateQRIS } = await import("../lib/qris-generator");
+      const result = await generateQRIS(total);
+      qrImage = result.qrImage;
     } catch (error) {
-      popup?.close();
-      throw error;
+      // Pesanan sudah tercatat, jadi jangan lempar error agar pengguna tidak
+      // checkout ulang dan membuat pesanan ganda.
+      console.error("generateQRIS error:", error);
     }
+
+    setPayment({ orderId, total, qrImage, whatsappUrl });
+    setCheckoutOpen(false);
   };
 
   const groupedCart = safeCart.reduce((acc: any, item) => {
@@ -456,6 +459,8 @@ export function CartDrawer({
             onCheckout={handleCheckout}
           />
         )}
+
+        {payment && <PaymentPanel payment={payment} onClose={handleClose} />}
       </div>
     </div>
   );
