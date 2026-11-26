@@ -91,7 +91,7 @@ export function CheckoutPanel({
 
   return (
     <section
-      className="absolute inset-0 z-20 flex min-h-0 flex-col bg-screen"
+      className="absolute inset-0 z-20 flex min-h-0 w-full max-w-full touch-pan-y flex-col overflow-hidden overscroll-none bg-screen"
       aria-labelledby="checkout-title"
     >
       <header className="flex shrink-0 items-center justify-between px-4 pb-3 pt-4">
@@ -115,8 +115,11 @@ export function CheckoutPanel({
         <span className="size-11" aria-hidden="true" />
       </header>
 
-      <form onSubmit={handleSubmit} className="flex min-h-0 flex-1 flex-col">
-        <div className="flex-1 space-y-6 overflow-y-auto px-4 pb-6 pt-2">
+      <form
+        onSubmit={handleSubmit}
+        className="flex min-h-0 w-full max-w-full flex-1 flex-col overflow-hidden"
+      >
+        <div className="min-h-0 w-full max-w-full flex-1 touch-pan-y space-y-6 overflow-x-hidden overflow-y-auto overscroll-x-none px-4 pb-6 pt-2">
           <div className="relative overflow-hidden rounded-[24px] bg-primary p-4">
             <div
               className="absolute -right-8 -top-10 size-32 rounded-full border-[16px] border-white/25"

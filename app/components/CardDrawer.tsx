@@ -34,14 +34,20 @@ export function CartDrawer({
   };
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!open) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyOverscroll = document.body.style.overscrollBehavior;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "none";
+    document.documentElement.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousBodyOverflow;
+      document.body.style.overscrollBehavior = previousBodyOverscroll;
+      document.documentElement.style.overflow = previousHtmlOverflow;
     };
   }, [open]);
 
@@ -182,7 +188,7 @@ export function CartDrawer({
 
   return (
     <div
-      className={`fixed inset-0 z-50 transition ${
+      className={`fixed inset-0 z-50 overflow-hidden overscroll-none transition ${
         open ? "visible" : "invisible"
       }`}
       aria-hidden={!open}
@@ -199,7 +205,7 @@ export function CartDrawer({
         role="dialog"
         aria-modal="true"
         aria-labelledby="cart-drawer-title"
-        className={`absolute right-0 top-0 flex h-full w-full flex-col overflow-hidden bg-screen shadow-2xl transition-transform duration-300 md:w-[440px] md:rounded-l-[32px] ${
+        className={`absolute right-0 top-0 flex h-full w-full max-w-full touch-pan-y flex-col overflow-hidden overscroll-none bg-screen shadow-2xl transition-transform duration-300 md:w-[440px] md:rounded-l-[32px] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -223,7 +229,7 @@ export function CartDrawer({
         </header>
 
         {/* ===== ITEMS ===== */}
-        <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-4 pb-5 pt-2">
+        <div className="flex min-h-0 w-full max-w-full flex-1 touch-pan-y flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-x-none px-4 pb-5 pt-2">
           {cart.length === 0 && (
             <div className="flex min-h-56 flex-col items-center justify-center rounded-[24px] bg-surface p-6 text-center shadow-card">
               <span className="grid size-14 place-items-center rounded-full bg-primary-light text-primary-strong">

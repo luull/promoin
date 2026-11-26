@@ -57,7 +57,7 @@ export default function Home() {
               Pesan minuman lebih hemat
             </p>
             <p className="text-base font-bold leading-5 tracking-[-0.01em]">
-              Promoin
+              Promok
             </p>
           </div>
         </div>

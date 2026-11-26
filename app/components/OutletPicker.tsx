@@ -104,12 +104,12 @@ export function OutletPicker({
 
   return (
     <section
-      className="absolute inset-0 z-30 flex min-h-0 flex-col bg-screen"
+      className="absolute inset-0 z-30 flex min-h-0 w-full max-w-full touch-pan-y flex-col overflow-hidden overscroll-none bg-screen"
       role="dialog"
       aria-modal="true"
       aria-labelledby="outlet-picker-title"
     >
-      <header className="shrink-0 px-4 pb-3 pt-4">
+      <header className="w-full max-w-full shrink-0 overflow-hidden px-4 pb-3 pt-4">
         <div className="flex items-center justify-between gap-3">
           <button
             type="button"
@@ -162,7 +162,7 @@ export function OutletPicker({
         </div>
       </header>
 
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-6 pt-2">
+      <div className="min-h-0 w-full max-w-full flex-1 touch-pan-y overflow-x-hidden overflow-y-auto overscroll-x-none px-4 pb-6 pt-2">
         {loading && (
           <div className="flex min-h-48 flex-col items-center justify-center text-center">
             <LoaderCircle
@@ -228,7 +228,7 @@ export function OutletPicker({
                   type="button"
                   onClick={() => onSelect(outlet)}
                   aria-pressed={selected}
-                  className={`w-full rounded-[22px] border-[1.5px] bg-surface p-3.5 text-left shadow-card transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                  className={`w-full max-w-full overflow-hidden rounded-[22px] border-[1.5px] bg-surface p-3.5 text-left shadow-card transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                     selected
                       ? "border-primary bg-primary-light"
                       : "border-transparent hover:border-border-subtle"
@@ -251,7 +251,7 @@ export function OutletPicker({
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-3">
-                        <p className="text-sm font-semibold leading-5 text-ink">
+                        <p className="min-w-0 break-words text-sm font-semibold leading-5 text-ink">
                           {outlet.name}
                         </p>
                         {selected && (
@@ -262,11 +262,11 @@ export function OutletPicker({
                       </div>
 
                       {area && (
-                        <p className="mt-1 text-xs font-semibold text-primary-strong">
+                        <p className="mt-1 break-words text-xs font-semibold text-primary-strong">
                           {area}
                         </p>
                       )}
-                      <p className="mt-1 line-clamp-2 text-xs leading-5 text-secondary">
+                      <p className="mt-1 line-clamp-2 break-words text-xs leading-5 text-secondary">
                         {outlet.address ?? "Alamat belum tersedia"}
                       </p>
                       {openingHours && (
