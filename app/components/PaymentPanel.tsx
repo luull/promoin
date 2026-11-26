@@ -1,6 +1,22 @@
 "use client";
 
 import { Download, MessageCircle, TriangleAlert, X } from "lucide-react";
+import Image from "next/image";
+
+function OrderNumber({
+  orderId,
+  className = "",
+}: {
+  orderId: number;
+  className?: string;
+}) {
+  return (
+    <p className={`text-xs font-medium text-muted ${className}`}>
+      No. Pesanan{" "}
+      <span className="font-semibold text-ink tabular-nums">#{orderId}</span>
+    </p>
+  );
+}
 
 export type PaymentInfo = {
   orderId: number;
@@ -48,19 +64,22 @@ export function PaymentPanel({
 
       <div className="min-h-0 w-full max-w-full flex-1 touch-pan-y space-y-5 overflow-x-hidden overflow-y-auto overscroll-x-none px-4 pb-6 pt-2">
         <div className="rounded-[24px] bg-surface p-5 text-center shadow-card">
-          <p className="text-xs font-medium text-muted">
-            No. Pesanan{" "}
-            <span className="font-semibold text-ink tabular-nums">
-              #{orderId}
-            </span>
-          </p>
-
           {qrImage ? (
             <>
+              {/* Logo resmi QRIS di atas kode, seperti stiker QRIS di kasir.
+                  File punya ruang kosong atas-bawah, jadi diberi margin negatif. */}
+              <Image
+                src="/qris.png"
+                alt="QRIS - QR Code Standar Pembayaran Nasional"
+                width={1250}
+                height={375}
+                sizes="176px"
+                className="mx-auto -my-2 h-auto w-[176px]"
+              />
               <img
                 src={qrImage}
                 alt="QRIS"
-                className="mx-auto mt-4 aspect-square w-full max-w-[260px] rounded-2xl border border-border-subtle"
+                className="mx-auto mt-3 aspect-square w-full max-w-[260px] rounded-2xl border border-border-subtle"
               />
               <p className="mt-4 text-[11px] leading-4 text-muted">
                 Total yang harus dibayar
@@ -68,6 +87,7 @@ export function PaymentPanel({
               <p className="text-xl font-bold leading-7 text-ink tabular-nums">
                 {amount}
               </p>
+              <OrderNumber orderId={orderId} className="mt-1" />
               <a
                 href={qrImage}
                 download={`qris-pesanan-${orderId}.png`}
@@ -78,14 +98,17 @@ export function PaymentPanel({
               </a>
             </>
           ) : (
-            <div
-              role="alert"
-              className="mt-4 flex items-start gap-2 rounded-2xl bg-red-50 p-4 text-left text-xs leading-5 text-red-600"
-            >
-              <TriangleAlert className="mt-0.5 shrink-0" size={16} />
-              QRIS belum bisa dibuat. Pesanan sudah tercatat, lanjutkan ke
-              WhatsApp untuk meminta QRIS pembayaran {amount} dari admin.
-            </div>
+            <>
+              <OrderNumber orderId={orderId} />
+              <div
+                role="alert"
+                className="mt-4 flex items-start gap-2 rounded-2xl bg-red-50 p-4 text-left text-xs leading-5 text-red-600"
+              >
+                <TriangleAlert className="mt-0.5 shrink-0" size={16} />
+                QRIS belum bisa dibuat. Pesanan sudah tercatat, lanjutkan ke
+                WhatsApp untuk meminta QRIS pembayaran {amount} dari admin.
+              </div>
+            </>
           )}
         </div>
 
