@@ -2,7 +2,8 @@ import { BrandKey } from "../types/products";
 import { BrandSetting } from "./brandSettings";
 import { getSupabaseClient } from "./supabase";
 
-export type OrderStatus = "new" | "paid" | "cancelled";
+/** Alur: new -> paid -> processing -> done. cancelled = dibatalkan. */
+export type OrderStatus = "new" | "paid" | "processing" | "done" | "cancelled";
 
 export type AdminSession = {
   token: string;
@@ -19,10 +20,11 @@ export type DashboardBrandRow = {
 
 export type DashboardData = {
   totals: {
+    /** Pesanan yang sudah dibayar: paid + processing + done. */
     paid_orders: number;
-    new_orders: number;
-    cancelled_orders: number;
     paid_revenue: number;
+    /** Tidak ada jika supabase/admin.sql belum dijalankan ulang. */
+    status_counts?: Record<OrderStatus, number>;
   };
   brands: DashboardBrandRow[];
 };
@@ -30,6 +32,8 @@ export type DashboardData = {
 export type AdminOrder = {
   id: number;
   customer_name: string;
+  /** Format 628xxxxxxxxx. null untuk pesanan sebelum nomor HP diwajibkan. */
+  customer_phone: string | null;
   status: OrderStatus;
   subtotal: number;
   admin_fee: number;
@@ -99,6 +103,11 @@ async function callAdminRpc<T>(fn: string, params: Record<string, unknown>) {
     }
 
     if (error.code === "23514") {
+      if (error.message?.includes("orders_status_check")) {
+        throw new Error(
+          "Database belum mengenal status Diproses/Selesai. Jalankan ulang supabase/admin.sql di Supabase SQL Editor.",
+        );
+      }
       throw new Error(
         error.message?.includes("brand_settings_brand_check")
           ? "Database masih memakai aturan brand lama. Jalankan ulang supabase/admin.sql di Supabase SQL Editor."

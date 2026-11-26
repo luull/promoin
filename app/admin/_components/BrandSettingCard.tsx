@@ -168,17 +168,17 @@ export function BrandSettingCard({
       </div>
 
       {/* ===== SALES ===== */}
-      <dl className="mt-4 grid grid-cols-3 gap-2 rounded-2xl bg-surface-alt p-3 text-center tabular-nums">
+      <dl className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl bg-surface-alt px-3 py-2 text-[11px] tabular-nums">
         {[
           { label: "Pesanan", value: Number(sales?.paid_orders ?? 0) },
           { label: "Cup", value: Number(sales?.cups ?? 0) },
           { label: "Omzet", value: formatRupiah(Number(sales?.revenue ?? 0)) },
         ].map((item) => (
-          <div key={item.label} className="min-w-0">
-            <dt className="text-[10px] font-medium text-muted">{item.label}</dt>
-            <dd className="mt-0.5 truncate text-sm font-bold text-ink">
+          <div key={item.label} className="flex items-center gap-1.5">
+            <dt className="text-muted">{item.label}</dt>
+            <dd className="font-bold text-ink">
               {loading ? (
-                <span className="mx-auto block h-4 w-10 animate-pulse rounded-full bg-border-subtle" />
+                <span className="block h-3 w-8 animate-pulse rounded-full bg-border-subtle" />
               ) : (
                 item.value
               )}
@@ -188,7 +188,11 @@ export function BrandSettingCard({
       </dl>
 
       {/* ===== DISCOUNT ===== */}
-      <form onSubmit={handleDiscountSubmit} className="mt-4" noValidate>
+      <form
+        onSubmit={handleDiscountSubmit}
+        className="mt-4 border-t border-dashed border-border-subtle pt-4"
+        noValidate
+      >
         <label
           htmlFor={`discount-${brand.id}`}
           className="mb-2 block text-xs font-medium text-secondary"

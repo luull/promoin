@@ -13,10 +13,13 @@ import { FormEvent, useMemo, useState } from "react";
 import { CartItem } from "../types/cart";
 import { Outlet } from "../types/outlets";
 import { BrandKey, brands } from "../types/products";
+import { isValidPhone, normalizePhone } from "../utils/phone";
 import { OutletPicker } from "./OutletPicker";
 
 export type CheckoutDetails = {
   name: string;
+  /** Sudah dinormalisasi ke format 628xxxxxxxxx. */
+  phone: string;
   outlets: Partial<Record<BrandKey, Outlet>>;
 };
 
@@ -46,6 +49,7 @@ export function CheckoutPanel({
   onCheckout: (details: CheckoutDetails) => void | Promise<void>;
 }) {
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [selectedOutlets, setSelectedOutlets] = useState<
     Partial<Record<BrandKey, Outlet>>
   >({});
@@ -61,7 +65,9 @@ export function CheckoutPanel({
   );
 
   const missingOutlet = cartBrands.some((brand) => !selectedOutlets[brand]);
-  const canCheckout = name.trim().length >= 2 && !missingOutlet;
+  const nameInvalid = name.trim().length < 2;
+  const phoneInvalid = !isValidPhone(phone);
+  const canCheckout = !nameInvalid && !phoneInvalid && !missingOutlet;
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -76,6 +82,7 @@ export function CheckoutPanel({
       // Mencatat pesanan lalu membuat QRIS untuk langkah pembayaran.
       await onCheckout({
         name: name.trim(),
+        phone: normalizePhone(phone),
         outlets: selectedOutlets,
       });
     } catch (error) {
@@ -141,35 +148,71 @@ export function CheckoutPanel({
             </div>
           </div>
 
-          <div>
-            <label
-              htmlFor="customer-name"
-              className="mb-2 block text-xs font-medium text-secondary"
-            >
-              Nama pemesan
-            </label>
-            <input
-              id="customer-name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder="Masukkan nama kamu"
-              autoComplete="name"
-              className={`h-12 w-full rounded-full border bg-surface px-5 text-sm text-ink shadow-card outline-none transition placeholder:text-muted focus:ring-4 ${
-                showValidation && name.trim().length < 2
-                  ? "border-red-400 focus:border-red-400 focus:ring-red-100"
-                  : "border-border-subtle focus:border-primary focus:ring-primary/20"
-              }`}
-              aria-invalid={showValidation && name.trim().length < 2}
-              aria-describedby="customer-name-error"
-            />
-            {showValidation && name.trim().length < 2 && (
-              <p
-                id="customer-name-error"
-                className="mt-1.5 px-2 text-xs text-red-600"
+          <div className="space-y-4">
+            <div>
+              <label
+                htmlFor="customer-name"
+                className="mb-2 block text-xs font-medium text-secondary"
               >
-                Masukkan nama minimal 2 karakter.
-              </p>
-            )}
+                Nama pemesan
+              </label>
+              <input
+                id="customer-name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="Masukkan nama kamu"
+                autoComplete="name"
+                className={`h-12 w-full rounded-full border bg-surface px-5 text-sm text-ink shadow-card outline-none transition placeholder:text-muted focus:ring-4 ${
+                  showValidation && nameInvalid
+                    ? "border-red-400 focus:border-red-400 focus:ring-red-100"
+                    : "border-border-subtle focus:border-primary focus:ring-primary/20"
+                }`}
+                aria-invalid={showValidation && nameInvalid}
+                aria-describedby="customer-name-error"
+              />
+              {showValidation && nameInvalid && (
+                <p
+                  id="customer-name-error"
+                  className="mt-1.5 px-2 text-xs text-red-600"
+                >
+                  Masukkan nama minimal 2 karakter.
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="customer-phone"
+                className="mb-2 block text-xs font-medium text-secondary"
+              >
+                Nomor HP (WhatsApp)
+              </label>
+              <input
+                id="customer-phone"
+                type="tel"
+                inputMode="tel"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                placeholder="08xxxxxxxxxx"
+                autoComplete="tel"
+                maxLength={20}
+                className={`h-12 w-full rounded-full border bg-surface px-5 text-sm text-ink shadow-card outline-none transition placeholder:text-muted focus:ring-4 tabular-nums ${
+                  showValidation && phoneInvalid
+                    ? "border-red-400 focus:border-red-400 focus:ring-red-100"
+                    : "border-border-subtle focus:border-primary focus:ring-primary/20"
+                }`}
+                aria-invalid={showValidation && phoneInvalid}
+                aria-describedby="customer-phone-error"
+              />
+              {showValidation && phoneInvalid && (
+                <p
+                  id="customer-phone-error"
+                  className="mt-1.5 px-2 text-xs text-red-600"
+                >
+                  Masukkan nomor HP yang valid, contoh 081234567890.
+                </p>
+              )}
+            </div>
           </div>
 
           <div>
@@ -321,7 +364,7 @@ export function CheckoutPanel({
           )}
           {!canCheckout && !showValidation && (
             <p className="mt-2 text-center text-[11px] text-muted">
-              Isi nama dan pilih semua outlet untuk melanjutkan.
+              Isi nama, nomor HP, dan pilih semua outlet untuk melanjutkan.
             </p>
           )}
         </footer>

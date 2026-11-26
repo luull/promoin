@@ -100,6 +100,7 @@ export function PaymentPanel({
               <span className="font-semibold text-ink">{amount}</span>.
             </li>
             <li>Setelah bayar, kirim pesanan dan bukti bayar lewat WhatsApp.</li>
+            <li>Status pesanan bisa dicek di menu Riwayat.</li>
           </ol>
         )}
       </div>

@@ -21,6 +21,12 @@ export const addToCart = (product: any, qty: number = 1) => {
 
   window.dispatchEvent(new Event("cart:update"));
 };
+/** Mengosongkan keranjang, misalnya setelah pesanan berhasil dicatat. */
+export const clearCart = () => {
+  localStorage.removeItem("cart");
+  window.dispatchEvent(new Event("cart:update"));
+};
+
 export const removeFromCart = (cartId: number) => {
   const cart = getCart().filter((item: any) => item.cartId !== cartId);
   saveCart(cart);

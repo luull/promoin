@@ -1,14 +1,16 @@
 import { CartItem } from "../types/cart";
 import { Outlet } from "../types/outlets";
 import { BrandKey, brands } from "../types/products";
+import { rememberOrder } from "./orderHistory";
 import { getSupabaseClient } from "./supabase";
 
 type CreateOrderResult =
-  | { ok: true; order_id: number; total: number }
+  | { ok: true; order_id: number; total: number; access_token: string }
   | {
       ok: false;
       error:
         | "INVALID_NAME"
+        | "INVALID_PHONE"
         | "INVALID_ITEMS"
         | "INVALID_OPTIONS"
         | "INVALID_OUTLET"
@@ -30,6 +32,8 @@ function toMessage(result: Extract<CreateOrderResult, { ok: false }>) {
       return `Harga ${(result.items ?? []).join(", ")} sudah berubah. Hapus menu tersebut lalu tambahkan lagi agar harganya terbaru.`;
     case "INVALID_NAME":
       return "Nama pemesan harus 2 sampai 80 karakter.";
+    case "INVALID_PHONE":
+      return "Nomor HP tidak valid. Gunakan nomor seperti 081234567890.";
     case "INVALID_OUTLET":
       return "Outlet yang dipilih tidak valid. Pilih ulang outletnya.";
     default:
@@ -38,15 +42,18 @@ function toMessage(result: Extract<CreateOrderResult, { ok: false }>) {
 }
 
 /**
- * Mencatat pesanan di database sebelum dikirim ke WhatsApp.
+ * Mencatat pesanan di database sebelum dikirim ke WhatsApp, lalu menyimpannya
+ * ke riwayat transaksi di perangkat ini.
  * Harga dihitung ulang oleh fungsi create_order di database.
  */
 export async function createOrder({
   name,
+  phone,
   items,
   outlets,
 }: {
   name: string;
+  phone: string;
   items: CartItem[];
   outlets: Partial<Record<BrandKey, Outlet>>;
 }) {
@@ -73,6 +80,7 @@ export async function createOrder({
 
   const { data, error } = await getSupabaseClient().rpc("create_order", {
     p_customer_name: name,
+    p_customer_phone: phone,
     p_items: payloadItems,
     p_outlets: payloadOutlets,
   });
@@ -89,6 +97,8 @@ export async function createOrder({
   if (!result.ok) {
     throw new Error(toMessage(result));
   }
+
+  rememberOrder({ id: result.order_id, token: result.access_token });
 
   return { orderId: result.order_id, total: result.total };
 }

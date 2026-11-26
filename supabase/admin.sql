@@ -17,6 +17,8 @@
 --     token sesi di admin_sessions sebelum menulis data.
 --   - Password disimpan sebagai hash bcrypt. Token sesi disimpan sebagai hash SHA-256.
 --   - Harga pesanan dihitung ulang di database, bukan dipercaya dari browser.
+--   - Riwayat transaksi pembeli dibaca lewat get_customer_orders dengan token acak
+--     per pesanan (disimpan di browser pembeli, di database hanya hash-nya).
 
 begin;
 
@@ -90,11 +92,39 @@ create table if not exists public.orders (
     updated_at timestamptz not null default now(),
 
     constraint orders_status_check
-        check (status in ('new', 'paid', 'cancelled'))
+        check (status in ('new', 'paid', 'processing', 'done', 'cancelled'))
 );
+
+-- Alur status: new (menunggu bayar) -> paid (dibayar) -> processing (diproses)
+-- -> done (selesai). cancelled = dibatalkan.
+-- Constraint diperbarui untuk tabel lama yang hanya mengenal new/paid/cancelled.
+alter table public.orders
+    drop constraint if exists orders_status_check;
+alter table public.orders
+    add constraint orders_status_check
+        check (status in ('new', 'paid', 'processing', 'done', 'cancelled'));
 
 create index if not exists orders_created_at_idx on public.orders (created_at desc);
 create index if not exists orders_status_idx on public.orders (status);
+
+-- Kolom tambahan (aman untuk tabel orders yang sudah ada).
+-- customer_phone   : nomor HP pembeli, dinormalisasi ke format 628xxxxxxxxx.
+--                    Pesanan lama tetap null.
+-- access_token_hash: hash SHA-256 token acak yang disimpan di browser pembeli.
+--                    Dipakai get_customer_orders agar pembeli bisa melihat
+--                    riwayat transaksinya sendiri tanpa login.
+alter table public.orders add column if not exists customer_phone text;
+alter table public.orders add column if not exists access_token_hash text;
+
+alter table public.orders
+    drop constraint if exists orders_customer_phone_check;
+alter table public.orders
+    add constraint orders_customer_phone_check
+        check (customer_phone is null or customer_phone ~ '^628[0-9]{7,11}$');
+
+create unique index if not exists orders_access_token_hash_idx
+    on public.orders (access_token_hash)
+    where access_token_hash is not null;
 
 create table if not exists public.order_items (
     id bigint generated always as identity primary key,
@@ -170,6 +200,23 @@ as $$
     end;
 $$;
 
+-- Harus sama dengan normalizePhone() di app/utils/phone.ts
+-- "0812-3456-7890" / "+62 812 3456 7890" / "812..." -> "6281234567890"
+create or replace function private.normalize_phone(p_phone text)
+returns text
+language sql
+immutable
+set search_path = ''
+as $$
+    select case
+        when d like '62%' then d
+        when d like '0%' then '62' || substr(d, 2)
+        when d like '8%' then '62' || d
+        else d
+    end
+    from (select regexp_replace(coalesce(p_phone, ''), '[^0-9]', '', 'g') as d) s;
+$$;
+
 create or replace function private.require_admin(p_token text)
 returns bigint
 language plpgsql
@@ -202,6 +249,7 @@ revoke all on function private.token_hash(text) from public, anon, authenticated
 revoke all on function private.brand_selling_price(numeric, numeric, integer)
     from public, anon, authenticated;
 revoke all on function private.require_admin(text) from public, anon, authenticated;
+revoke all on function private.normalize_phone(text) from public, anon, authenticated;
 
 -- ============================================================
 -- RPC: LOGIN / LOGOUT / SESI
@@ -348,7 +396,7 @@ $$;
 -- RPC: DASHBOARD & PESANAN
 -- ============================================================
 
--- Penjualan dihitung hanya dari pesanan berstatus 'paid'.
+-- Penjualan dihitung dari pesanan yang sudah dibayar: paid, processing, done.
 create or replace function public.admin_dashboard(p_token text, p_from timestamptz default null)
 returns jsonb
 language plpgsql
@@ -363,10 +411,17 @@ begin
     perform private.require_admin(p_token);
 
     select jsonb_build_object(
-               'paid_orders', count(*) filter (where o.status = 'paid'),
-               'new_orders', count(*) filter (where o.status = 'new'),
-               'cancelled_orders', count(*) filter (where o.status = 'cancelled'),
-               'paid_revenue', coalesce(sum(o.total) filter (where o.status = 'paid'), 0)
+               'paid_orders',
+                   count(*) filter (where o.status in ('paid', 'processing', 'done')),
+               'paid_revenue',
+                   coalesce(sum(o.total) filter (where o.status in ('paid', 'processing', 'done')), 0),
+               'status_counts', jsonb_build_object(
+                   'new', count(*) filter (where o.status = 'new'),
+                   'paid', count(*) filter (where o.status = 'paid'),
+                   'processing', count(*) filter (where o.status = 'processing'),
+                   'done', count(*) filter (where o.status = 'done'),
+                   'cancelled', count(*) filter (where o.status = 'cancelled')
+               )
            )
       into v_totals
       from public.orders o
@@ -381,7 +436,7 @@ begin
                  sum(i.subtotal) as revenue
             from public.order_items i
             join public.orders o on o.id = i.order_id
-           where o.status = 'paid'
+           where o.status in ('paid', 'processing', 'done')
              and (p_from is null or o.created_at >= p_from)
            group by i.brand
       ) b;
@@ -410,6 +465,7 @@ begin
           from (
               select o.id,
                      o.customer_name,
+                     o.customer_phone,
                      o.status,
                      o.subtotal,
                      o.admin_fee,
@@ -460,6 +516,11 @@ declare
 begin
     perform private.require_admin(p_token);
 
+    if p_status is null
+       or p_status not in ('new', 'paid', 'processing', 'done', 'cancelled') then
+        raise exception 'INVALID_STATUS' using errcode = '22023';
+    end if;
+
     update public.orders
        set status = p_status,
            updated_at = now()
@@ -478,11 +539,17 @@ $$;
 -- RPC: CHECKOUT (dipanggil pembeli)
 -- ============================================================
 
+-- Versi lama tanpa nomor HP diganti oleh versi di bawah.
+drop function if exists public.create_order(text, jsonb, jsonb);
+
+-- p_customer_phone: nomor HP bebas format (08..., +62..., 62...), dinormalisasi di sini.
 -- p_items: [{ product_id, qty, unit_price, options: [{ name, value }] }]
 -- p_outlets: { "<brand>": <outlet_id>, ... }
--- Mengembalikan { ok: true, order_id, total } atau { ok: false, error, ... }.
+-- Mengembalikan { ok: true, order_id, total, access_token } atau { ok: false, error, ... }.
+-- access_token hanya dikembalikan sekali dan disimpan browser untuk riwayat transaksi.
 create or replace function public.create_order(
     p_customer_name text,
+    p_customer_phone text,
     p_items jsonb,
     p_outlets jsonb
 )
@@ -495,6 +562,8 @@ as $$
 declare
     c_admin_fee constant integer := 5000;
     v_name text := trim(coalesce(p_customer_name, ''));
+    v_phone text := private.normalize_phone(p_customer_phone);
+    v_access_token text;
     v_item jsonb;
     v_option jsonb;
     v_qty_raw numeric;
@@ -522,6 +591,10 @@ declare
 begin
     if length(v_name) < 2 or length(v_name) > 80 then
         return jsonb_build_object('ok', false, 'error', 'INVALID_NAME');
+    end if;
+
+    if v_phone !~ '^628[0-9]{7,11}$' then
+        return jsonb_build_object('ok', false, 'error', 'INVALID_PHONE');
     end if;
 
     if jsonb_typeof(p_items) is distinct from 'array'
@@ -656,8 +729,15 @@ begin
         end loop;
     end if;
 
-    insert into public.orders (customer_name, subtotal, admin_fee, total, outlets)
-    values (v_name, v_subtotal, c_admin_fee, v_subtotal + c_admin_fee, v_outlets)
+    v_access_token := encode(extensions.gen_random_bytes(32), 'hex');
+
+    insert into public.orders (
+        customer_name, customer_phone, subtotal, admin_fee, total, outlets, access_token_hash
+    )
+    values (
+        v_name, v_phone, v_subtotal, c_admin_fee, v_subtotal + c_admin_fee, v_outlets,
+        private.token_hash(v_access_token)
+    )
     returning id into v_order_id;
 
     insert into public.order_items (order_id, product_id, brand, name, qty, unit_price, subtotal, options)
@@ -674,7 +754,73 @@ begin
     return jsonb_build_object(
         'ok', true,
         'order_id', v_order_id,
-        'total', v_subtotal + c_admin_fee
+        'total', v_subtotal + c_admin_fee,
+        'access_token', v_access_token
+    );
+end;
+$$;
+
+-- ============================================================
+-- RPC: RIWAYAT TRANSAKSI (dipanggil pembeli)
+-- ============================================================
+
+-- p_tokens: access_token dari create_order yang disimpan di browser (maks. 50).
+-- Hanya pesanan dengan token yang cocok yang dikembalikan, sehingga pembeli
+-- tidak bisa melihat pesanan orang lain dengan menebak nomor pesanan.
+create or replace function public.get_customer_orders(p_tokens text[])
+returns jsonb
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+declare
+    v_hashes text[];
+begin
+    if p_tokens is null or cardinality(p_tokens) = 0 then
+        return '[]'::jsonb;
+    end if;
+
+    if cardinality(p_tokens) > 50 then
+        raise exception 'TOO_MANY_TOKENS' using errcode = '22023';
+    end if;
+
+    select coalesce(array_agg(private.token_hash(t)), '{}')
+      into v_hashes
+      from unnest(p_tokens) t
+     where t ~ '^[0-9a-f]{64}$';
+
+    return (
+        select coalesce(jsonb_agg(to_jsonb(x) order by x.created_at desc), '[]'::jsonb)
+          from (
+              select o.id,
+                     o.status,
+                     o.subtotal,
+                     o.admin_fee,
+                     o.total,
+                     o.outlets,
+                     o.created_at,
+                     o.updated_at,
+                     (
+                         select coalesce(
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'brand', i.brand,
+                                            'name', i.name,
+                                            'qty', i.qty,
+                                            'subtotal', i.subtotal,
+                                            'options', i.options
+                                        )
+                                        order by i.id
+                                    ),
+                                    '[]'::jsonb
+                                )
+                           from public.order_items i
+                          where i.order_id = o.id
+                     ) as items
+                from public.orders o
+               where o.access_token_hash = any (v_hashes)
+          ) x
     );
 end;
 $$;
@@ -688,7 +834,8 @@ revoke all on function public.admin_update_brand(text, text, boolean, integer) f
 revoke all on function public.admin_dashboard(text, timestamptz) from public;
 revoke all on function public.admin_list_orders(text, text, timestamptz, integer) from public;
 revoke all on function public.admin_set_order_status(text, bigint, text) from public;
-revoke all on function public.create_order(text, jsonb, jsonb) from public;
+revoke all on function public.create_order(text, text, jsonb, jsonb) from public;
+revoke all on function public.get_customer_orders(text[]) from public;
 
 grant execute on function public.admin_login(text, text) to anon, authenticated;
 grant execute on function public.admin_logout(text) to anon, authenticated;
@@ -697,6 +844,7 @@ grant execute on function public.admin_update_brand(text, text, boolean, integer
 grant execute on function public.admin_dashboard(text, timestamptz) to anon, authenticated;
 grant execute on function public.admin_list_orders(text, text, timestamptz, integer) to anon, authenticated;
 grant execute on function public.admin_set_order_status(text, bigint, text) to anon, authenticated;
-grant execute on function public.create_order(text, jsonb, jsonb) to anon, authenticated;
+grant execute on function public.create_order(text, text, jsonb, jsonb) to anon, authenticated;
+grant execute on function public.get_customer_orders(text[]) to anon, authenticated;
 
 commit;

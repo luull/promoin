@@ -5,8 +5,9 @@ import { ChevronLeft, PlusCircle, ShoppingBag, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CartItem } from "../types/cart";
 import { BrandKey, brands } from "../types/products";
-import { getCart, removeFromCart } from "../utils/cart";
+import { clearCart, getCart, removeFromCart } from "../utils/cart";
 import { createOrder } from "../lib/orders";
+import { toLocalPhone } from "../utils/phone";
 import { CheckoutDetails, CheckoutPanel } from "./CheckoutPanel";
 import { PaymentInfo, PaymentPanel } from "./PaymentPanel";
 
@@ -90,7 +91,8 @@ export function CartDrawer({
     let text = `🧾 *INVOICE PESANAN - PROMOIN*\n`;
     text += `━━━━━━━━━━━━━━━━━━\n\n`;
     text += `🆔 *No. Pesanan:* #${orderId}\n`;
-    text += `👤 *Nama:* ${checkout.name}\n\n`;
+    text += `👤 *Nama:* ${checkout.name}\n`;
+    text += `📱 *No. HP:* ${toLocalPhone(checkout.phone)}\n\n`;
 
     let orderSubtotal = 0;
 
@@ -147,6 +149,7 @@ export function CartDrawer({
   const handleCheckout = async (details: CheckoutDetails) => {
     const { orderId, total } = await createOrder({
       name: details.name,
+      phone: details.phone,
       items: cart,
       outlets: details.outlets,
     });
@@ -154,6 +157,10 @@ export function CartDrawer({
     const message = generateWhatsAppMessage(cart, details, orderId);
     const phone = "6281586298430";
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+    // Pesanan sudah tercatat, jadi keranjang dikosongkan agar tidak
+    // ter-checkout dua kali. Pesan WhatsApp di atas sudah memakai isi lama.
+    clearCart();
 
     // QRIS dibuat setelah pesanan tercatat, memakai total dari database.
     // Library QR baru dimuat saat pengguna akan membayar.

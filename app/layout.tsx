@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Promoin - Cari Promo & Diskon Semua Brand",
+  title: "Promok - Cari Promo & Diskon Semua Brand",
   description:
     "Temukan promo terbaru dari berbagai brand favoritmu. Diskon makanan, minuman, lifestyle, dan banyak lagi di Promoin.",
   keywords: [

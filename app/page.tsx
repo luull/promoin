@@ -2,10 +2,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Coffee, House, ShoppingBag, Store } from "lucide-react";
+import {
+  ArrowUpRight,
+  House,
+  ReceiptText,
+  ShoppingBag,
+  Store,
+} from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { BrandSelector } from "./components/BrandSelector";
 import { CartDrawer } from "./components/CardDrawer";
+import { OrderHistoryDrawer } from "./components/OrderHistoryDrawer";
 import { ProductSection } from "./components/ProductSection";
 import { BrandKey } from "./types/products";
 
@@ -17,6 +25,7 @@ const CartBadge = dynamic(
 export default function Home() {
   const [brand, setBrand] = useState<BrandKey>("fore");
   const [openCart, setOpenCart] = useState(false);
+  const [openHistory, setOpenHistory] = useState(false);
   const [cartCount, setCartCount] = useState(() => {
     if (typeof window === "undefined") return 0;
 
@@ -45,32 +54,39 @@ export default function Home() {
     >
       {/* ================= HEADER ================= */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-4 md:pt-6">
-        <div className="flex items-center gap-3">
-          <span
-            className="grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card"
-            aria-hidden="true"
-          >
-            <Coffee size={20} strokeWidth={1.8} />
-          </span>
-          <div>
-            <p className="text-[11px] font-medium leading-4 text-muted">
-              Pesan minuman lebih hemat
-            </p>
-            <p className="text-base font-bold leading-5 tracking-[-0.01em]">
-              Promok
-            </p>
-          </div>
+        {/* Logo berwarna hijau muda, jadi diberi latar gelap agar terbaca. */}
+        <div className="flex h-11 items-center md:h-12 md:px-5">
+          <Image
+            src="/logo-pep.png"
+            alt="Pepbow Beverage & Bites"
+            width={1500}
+            height={460}
+            sizes="(min-width: 768px) 104px, 91px"
+            loading="eager"
+            className="h-7 w-auto md:h-8"
+          />
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpenCart(true)}
-          className="relative grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-screen"
-          aria-label="Buka keranjang"
-        >
-          <ShoppingBag size={20} strokeWidth={1.8} />
-          <CartBadge count={cartCount} />
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setOpenHistory(true)}
+            className="grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-screen"
+            aria-label="Riwayat transaksi"
+          >
+            <ReceiptText size={20} strokeWidth={1.8} />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setOpenCart(true)}
+            className="relative grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-screen"
+            aria-label="Buka keranjang"
+          >
+            <ShoppingBag size={20} strokeWidth={1.8} />
+            <CartBadge count={cartCount} />
+          </button>
+        </div>
       </header>
 
       {/* ================= HERO ================= */}
@@ -92,7 +108,7 @@ export default function Home() {
             </span>
 
             <h1 className="mt-2.5 text-[17px] font-bold leading-[1.3] tracking-[-0.01em] text-on-primary sm:text-xl md:mt-4 md:text-4xl md:leading-[1.15]">
-              Hemat 30% ++ untuk Setiap Pembelian Minuman atau Makanan.
+              Hemat 30% ++ untuk Setiap Pembelian.
             </h1>
 
             <p className="mt-3 hidden max-w-md text-sm leading-6 text-ink/70 md:block">
@@ -131,6 +147,10 @@ export default function Home() {
       {/* ================= PRODUCTS ================= */}
       <ProductSection brand={brand} onOpenCart={() => setOpenCart(true)} />
       <CartDrawer open={openCart} onClose={() => setOpenCart(false)} />
+      <OrderHistoryDrawer
+        open={openHistory}
+        onClose={() => setOpenHistory(false)}
+      />
 
       {/* ================= BOTTOM NAV (MOBILE) ================= */}
       <nav
@@ -155,6 +175,15 @@ export default function Home() {
         >
           <Store size={22} strokeWidth={1.7} />
         </a>
+
+        <button
+          type="button"
+          onClick={() => setOpenHistory(true)}
+          className="grid size-12 place-items-center rounded-full text-secondary transition hover:bg-surface-alt hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-label="Riwayat transaksi"
+        >
+          <ReceiptText size={22} strokeWidth={1.7} />
+        </button>
 
         <button
           type="button"
