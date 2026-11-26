@@ -19,6 +19,7 @@ import {
   getRememberedOrderCount,
 } from "./lib/orderHistory";
 import { ProductSection } from "./components/ProductSection";
+import { SiteFooter } from "./components/SiteFooter";
 import { BrandKey } from "./types/products";
 
 const CartBadge = dynamic(
@@ -68,7 +69,6 @@ export default function Home() {
     >
       {/* ================= HEADER ================= */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-4 md:pt-6">
-        {/* Logo berwarna hijau muda, jadi diberi latar gelap agar terbaca. */}
         <div className="flex h-11 items-center md:h-12 md:px-5">
           <Image
             src="/logo-pep.png"
@@ -161,6 +161,13 @@ export default function Home() {
 
       {/* ================= PRODUCTS ================= */}
       <ProductSection brand={brand} onOpenCart={() => setOpenCart(true)} />
+
+      {/* ================= FOOTER ================= */}
+      <SiteFooter
+        onOpenCart={() => setOpenCart(true)}
+        onOpenHistory={() => setOpenHistory(true)}
+      />
+
       <CartDrawer open={openCart} onClose={() => setOpenCart(false)} />
       <OrderHistoryDrawer
         open={openHistory}

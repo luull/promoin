@@ -18,12 +18,14 @@ import {
   adminListOrders,
 } from "../../lib/admin";
 import { BrandSettingsMap, getBrandSettings } from "../../lib/brandSettings";
+import { StoreSettings, getStoreSettings } from "../../lib/storeSettings";
+import { AdminFeeCard } from "./AdminFeeCard";
 import { BrandKey, brands } from "../../types/products";
 import { BrandSettingCard } from "./BrandSettingCard";
 import { OrderList } from "./OrderList";
 import { PERIODS, Period, formatRupiah, periodStart } from "./format";
 
-type Tab = "orders" | "brands";
+type Tab = "orders" | "settings";
 
 export function AdminDashboard({
   session,
@@ -40,6 +42,9 @@ export function AdminDashboard({
   const [dashboard, setDashboard] = useState<DashboardData | null>(null);
   const [orders, setOrders] = useState<AdminOrder[]>([]);
   const [settings, setSettings] = useState<BrandSettingsMap>({});
+  const [storeSettings, setStoreSettings] = useState<StoreSettings | null>(
+    null,
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
@@ -55,21 +60,24 @@ export function AdminDashboard({
 
       try {
         const from = periodStart(period);
-        const [dashboardData, orderData, brandSettings] = await Promise.all([
-          adminDashboard(token, from),
-          adminListOrders(
-            token,
-            statusFilter === "all" ? null : statusFilter,
-            from,
-          ),
-          getBrandSettings({ fresh: true }),
-        ]);
+        const [dashboardData, orderData, brandSettings, store] =
+          await Promise.all([
+            adminDashboard(token, from),
+            adminListOrders(
+              token,
+              statusFilter === "all" ? null : statusFilter,
+              from,
+            ),
+            getBrandSettings({ fresh: true }),
+            getStoreSettings({ fresh: true }),
+          ]);
 
         if (cancelled) return;
 
         setDashboard(dashboardData);
         setOrders(orderData);
         setSettings(brandSettings);
+        setStoreSettings(store);
       } catch (loadError) {
         if (cancelled) return;
 
@@ -132,8 +140,8 @@ export function AdminDashboard({
       badge: actionCount,
     },
     {
-      id: "brands",
-      label: "Brand & Diskon",
+      id: "settings",
+      label: "Pengaturan",
       icon: <SlidersHorizontal size={16} strokeWidth={2} />,
     },
   ];
@@ -325,46 +333,77 @@ export function AdminDashboard({
         </section>
       </div>
 
-      {/* ===== TAB: BRAND & DISKON ===== */}
+      {/* ===== TAB: PENGATURAN ===== */}
       <div
-        id="admin-panel-brands"
+        id="admin-panel-settings"
         role="tabpanel"
-        aria-labelledby="admin-tab-brands"
-        hidden={tab !== "brands"}
+        aria-labelledby="admin-tab-settings"
+        hidden={tab !== "settings"}
         className="mx-auto max-w-6xl px-4"
       >
-        <p className="mt-4 text-xs leading-5 text-secondary">
-          Atur brand yang tampil di toko dan diskonnya. Angka penjualan
-          mengikuti periode yang dipilih.
-        </p>
+        <section className="mt-5" aria-labelledby="admin-fee-title">
+          <h2
+            id="admin-fee-title"
+            className="text-base font-bold tracking-[-0.01em] text-ink"
+          >
+            Fee admin
+          </h2>
+          <p className="mt-0.5 text-xs leading-5 text-secondary">
+            Biaya layanan yang ditambahkan ke setiap pesanan.
+          </p>
+          <div className="mt-3 md:w-1/2 md:pr-1.5">
+            <AdminFeeCard
+              // Dipasang ulang sekali setelah data termuat agar isian ikut nilai tersimpan.
+              key={storeSettings ? "ready" : "loading"}
+              token={token}
+              settings={storeSettings}
+              loading={loading && !storeSettings}
+              onSaved={setStoreSettings}
+              onSessionExpired={onSessionExpired}
+            />
+          </div>
+        </section>
 
-        <div className="mt-4 grid items-start gap-3 md:grid-cols-2">
-          {brands.map((brand) => {
-            const setting = settings[brand.id];
+        <section className="mt-8" aria-labelledby="admin-brands-title">
+          <h2
+            id="admin-brands-title"
+            className="text-base font-bold tracking-[-0.01em] text-ink"
+          >
+            Brand &amp; diskon
+          </h2>
+          <p className="mt-0.5 text-xs leading-5 text-secondary">
+            Atur brand yang tampil di toko dan diskonnya. Angka penjualan
+            mengikuti periode yang dipilih.
+          </p>
 
-            return (
-              <BrandSettingCard
-                key={`${brand.id}-${setting?.updated_at ?? "default"}`}
-                token={token}
-                brand={{
-                  id: brand.id as BrandKey,
-                  name: brand.name,
-                  logo: brand.logo,
-                }}
-                setting={setting}
-                sales={dashboard?.brands.find((row) => row.brand === brand.id)}
-                loading={loading && !dashboard}
-                onSaved={(saved) => {
-                  setSettings((current) => ({
-                    ...current,
-                    [saved.brand]: saved,
-                  }));
-                }}
-                onSessionExpired={onSessionExpired}
-              />
-            );
-          })}
-        </div>
+          <div className="mt-3 grid items-start gap-3 md:grid-cols-2">
+            {brands.map((brand) => {
+              const setting = settings[brand.id];
+  
+              return (
+                <BrandSettingCard
+                  key={`${brand.id}-${setting?.updated_at ?? "default"}`}
+                  token={token}
+                  brand={{
+                    id: brand.id as BrandKey,
+                    name: brand.name,
+                    logo: brand.logo,
+                  }}
+                  setting={setting}
+                  sales={dashboard?.brands.find((row) => row.brand === brand.id)}
+                  loading={loading && !dashboard}
+                  onSaved={(saved) => {
+                    setSettings((current) => ({
+                      ...current,
+                      [saved.brand]: saved,
+                    }));
+                  }}
+                  onSessionExpired={onSessionExpired}
+                />
+              );
+            })}
+          </div>
+        </section>
       </div>
     </main>
   );

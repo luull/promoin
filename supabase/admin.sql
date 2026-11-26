@@ -80,6 +80,22 @@ insert into public.brand_settings (brand)
 values ('fore'), ('kopken'), ('tomoro'), ('starbuck'), ('chagee')
 on conflict (brand) do nothing;
 
+-- Pengaturan toko, hanya satu baris (id selalu true).
+-- admin_fee dipakai create_order untuk pesanan baru. Pesanan lama tetap
+-- menyimpan fee saat dibuat di kolom orders.admin_fee.
+create table if not exists public.store_settings (
+    id boolean primary key default true,
+    admin_fee integer not null default 5000,
+    updated_at timestamptz not null default now(),
+
+    constraint store_settings_single_row check (id),
+    constraint store_settings_admin_fee_check check (admin_fee between 0 and 100000)
+);
+
+insert into public.store_settings (id)
+values (true)
+on conflict (id) do nothing;
+
 create table if not exists public.orders (
     id bigint generated always as identity primary key,
     customer_name text not null,
@@ -151,6 +167,7 @@ create index if not exists order_items_brand_idx on public.order_items (brand);
 alter table public.admin_users enable row level security;
 alter table public.admin_sessions enable row level security;
 alter table public.brand_settings enable row level security;
+alter table public.store_settings enable row level security;
 alter table public.orders enable row level security;
 alter table public.order_items enable row level security;
 
@@ -162,6 +179,17 @@ grant select on public.brand_settings to anon, authenticated;
 drop policy if exists "brand_settings_public_read" on public.brand_settings;
 create policy "brand_settings_public_read"
     on public.brand_settings
+    for select
+    to anon, authenticated
+    using (true);
+
+-- Fee dibaca publik agar keranjang menampilkan fee terbaru.
+revoke insert, update, delete, truncate on public.store_settings from anon, authenticated;
+grant select on public.store_settings to anon, authenticated;
+
+drop policy if exists "store_settings_public_read" on public.store_settings;
+create policy "store_settings_public_read"
+    on public.store_settings
     for select
     to anon, authenticated
     using (true);
@@ -393,6 +421,43 @@ end;
 $$;
 
 -- ============================================================
+-- RPC: PENGATURAN TOKO (FEE ADMIN)
+-- ============================================================
+
+create or replace function public.admin_update_store_settings(
+    p_token text,
+    p_admin_fee integer
+)
+returns jsonb
+language plpgsql
+volatile
+security definer
+set search_path = ''
+as $$
+declare
+    v_row public.store_settings%rowtype;
+begin
+    perform private.require_admin(p_token);
+
+    if p_admin_fee is null or p_admin_fee < 0 or p_admin_fee > 100000 then
+        raise exception 'INVALID_INPUT' using errcode = '22023';
+    end if;
+
+    insert into public.store_settings (id, admin_fee, updated_at)
+    values (true, p_admin_fee, now())
+    on conflict (id) do update
+        set admin_fee = excluded.admin_fee,
+            updated_at = now()
+    returning * into v_row;
+
+    return jsonb_build_object(
+        'admin_fee', v_row.admin_fee,
+        'updated_at', v_row.updated_at
+    );
+end;
+$$;
+
+-- ============================================================
 -- RPC: DASHBOARD & PESANAN
 -- ============================================================
 
@@ -545,7 +610,8 @@ drop function if exists public.create_order(text, jsonb, jsonb);
 -- p_customer_phone: nomor HP bebas format (08..., +62..., 62...), dinormalisasi di sini.
 -- p_items: [{ product_id, qty, unit_price, options: [{ name, value }] }]
 -- p_outlets: { "<brand>": <outlet_id>, ... }
--- Mengembalikan { ok: true, order_id, total, access_token } atau { ok: false, error, ... }.
+-- Mengembalikan { ok: true, order_id, subtotal, admin_fee, total, access_token }
+-- atau { ok: false, error, ... }.
 -- access_token hanya dikembalikan sekali dan disimpan browser untuk riwayat transaksi.
 create or replace function public.create_order(
     p_customer_name text,
@@ -560,7 +626,7 @@ security definer
 set search_path = ''
 as $$
 declare
-    c_admin_fee constant integer := 5000;
+    v_admin_fee integer;
     v_name text := trim(coalesce(p_customer_name, ''));
     v_phone text := private.normalize_phone(p_customer_phone);
     v_access_token text;
@@ -729,13 +795,20 @@ begin
         end loop;
     end if;
 
+    -- Fee diatur admin di store_settings. 5000 hanya cadangan jika barisnya hilang.
+    select s.admin_fee
+      into v_admin_fee
+      from public.store_settings s
+     where s.id;
+    v_admin_fee := coalesce(v_admin_fee, 5000);
+
     v_access_token := encode(extensions.gen_random_bytes(32), 'hex');
 
     insert into public.orders (
         customer_name, customer_phone, subtotal, admin_fee, total, outlets, access_token_hash
     )
     values (
-        v_name, v_phone, v_subtotal, c_admin_fee, v_subtotal + c_admin_fee, v_outlets,
+        v_name, v_phone, v_subtotal, v_admin_fee, v_subtotal + v_admin_fee, v_outlets,
         private.token_hash(v_access_token)
     )
     returning id into v_order_id;
@@ -754,7 +827,9 @@ begin
     return jsonb_build_object(
         'ok', true,
         'order_id', v_order_id,
-        'total', v_subtotal + c_admin_fee,
+        'subtotal', v_subtotal,
+        'admin_fee', v_admin_fee,
+        'total', v_subtotal + v_admin_fee,
         'access_token', v_access_token
     );
 end;
@@ -831,6 +906,7 @@ revoke all on function public.admin_login(text, text) from public;
 revoke all on function public.admin_logout(text) from public;
 revoke all on function public.admin_me(text) from public;
 revoke all on function public.admin_update_brand(text, text, boolean, integer) from public;
+revoke all on function public.admin_update_store_settings(text, integer) from public;
 revoke all on function public.admin_dashboard(text, timestamptz) from public;
 revoke all on function public.admin_list_orders(text, text, timestamptz, integer) from public;
 revoke all on function public.admin_set_order_status(text, bigint, text) from public;
@@ -841,6 +917,7 @@ grant execute on function public.admin_login(text, text) to anon, authenticated;
 grant execute on function public.admin_logout(text) to anon, authenticated;
 grant execute on function public.admin_me(text) to anon, authenticated;
 grant execute on function public.admin_update_brand(text, text, boolean, integer) to anon, authenticated;
+grant execute on function public.admin_update_store_settings(text, integer) to anon, authenticated;
 grant execute on function public.admin_dashboard(text, timestamptz) to anon, authenticated;
 grant execute on function public.admin_list_orders(text, text, timestamptz, integer) to anon, authenticated;
 grant execute on function public.admin_set_order_status(text, bigint, text) to anon, authenticated;

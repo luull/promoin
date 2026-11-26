@@ -1,5 +1,6 @@
 import { BrandKey } from "../types/products";
 import { BrandSetting } from "./brandSettings";
+import { StoreSettings } from "./storeSettings";
 import { getSupabaseClient } from "./supabase";
 
 /** Alur: new -> paid -> processing -> done. cancelled = dibatalkan. */
@@ -164,6 +165,16 @@ export async function adminUpdateBrand(
     p_brand: brand,
     p_is_visible: isVisible,
     p_discount_percent: discountPercent,
+  });
+}
+
+export async function adminUpdateStoreSettings(
+  token: string,
+  adminFee: number,
+) {
+  return callAdminRpc<StoreSettings>("admin_update_store_settings", {
+    p_token: token,
+    p_admin_fee: adminFee,
   });
 }
 

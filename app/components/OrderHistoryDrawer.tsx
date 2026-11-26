@@ -1,7 +1,13 @@
 "use client";
 
 import {
+  BadgeCheck,
   ChevronLeft,
+  CircleCheck,
+  CircleX,
+  Clock,
+  Coffee,
+  type LucideIcon,
   MapPin,
   ReceiptText,
   RefreshCw,
@@ -15,15 +21,36 @@ import {
 } from "../lib/orderHistory";
 import { BrandKey, brands } from "../types/products";
 
+// Kuning = menunggu pembeli, oranye = sedang dikerjakan, hijau = selesai.
 const STATUS_META: Record<
   CustomerOrderStatus,
-  { label: string; className: string }
+  { label: string; className: string; icon: LucideIcon }
 > = {
-  new: { label: "Menunggu pembayaran", className: "bg-amber-50 text-amber-700" },
-  paid: { label: "Dibayar", className: "bg-sky-50 text-sky-700" },
-  processing: { label: "Diproses", className: "bg-ink text-white" },
-  done: { label: "Selesai", className: "bg-primary text-on-primary" },
-  cancelled: { label: "Dibatalkan", className: "bg-red-50 text-red-600" },
+  new: {
+    label: "Menunggu pembayaran",
+    className: "bg-amber-50 text-amber-700",
+    icon: Clock,
+  },
+  paid: {
+    label: "Dibayar",
+    className: "bg-sky-50 text-sky-700",
+    icon: BadgeCheck,
+  },
+  processing: {
+    label: "Diproses",
+    className: "bg-orange-100 text-orange-700",
+    icon: Coffee,
+  },
+  done: {
+    label: "Selesai",
+    className: "bg-primary text-on-primary",
+    icon: CircleCheck,
+  },
+  cancelled: {
+    label: "Dibatalkan",
+    className: "bg-red-50 text-red-600",
+    icon: CircleX,
+  },
 };
 
 function formatRupiah(value: number) {
@@ -228,8 +255,9 @@ export function OrderHistoryDrawer({
                     </p>
                   </div>
                   <span
-                    className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold ${meta.className}`}
+                    className={`inline-flex shrink-0 items-center gap-1 rounded-full py-1 pl-2 pr-2.5 text-[10px] font-bold ${meta.className}`}
                   >
+                    <meta.icon size={12} strokeWidth={2.4} aria-hidden="true" />
                     {meta.label}
                   </span>
                 </div>

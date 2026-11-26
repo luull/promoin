@@ -5,7 +5,14 @@ import { rememberOrder } from "./orderHistory";
 import { getSupabaseClient } from "./supabase";
 
 type CreateOrderResult =
-  | { ok: true; order_id: number; total: number; access_token: string }
+  | {
+      ok: true;
+      order_id: number;
+      total: number;
+      /** Tidak ada jika supabase/admin.sql versi terbaru belum dijalankan. */
+      admin_fee?: number;
+      access_token: string;
+    }
   | {
       ok: false;
       error:
@@ -100,5 +107,10 @@ export async function createOrder({
 
   rememberOrder({ id: result.order_id, token: result.access_token });
 
-  return { orderId: result.order_id, total: result.total };
+  return {
+    orderId: result.order_id,
+    total: result.total,
+    adminFee:
+      typeof result.admin_fee === "number" ? result.admin_fee : undefined,
+  };
 }

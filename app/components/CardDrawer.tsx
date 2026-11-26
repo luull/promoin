@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 import { CartItem } from "../types/cart";
 import { BrandKey, brands } from "../types/products";
 import { clearCart, getCart, removeFromCart } from "../utils/cart";
+import { ADMIN_WHATSAPP } from "../lib/contact";
 import { createOrder } from "../lib/orders";
+import { DEFAULT_ADMIN_FEE, getStoreSettings } from "../lib/storeSettings";
 import { toLocalPhone } from "../utils/phone";
 import { CheckoutDetails, CheckoutPanel } from "./CheckoutPanel";
 import { PaymentInfo, PaymentPanel } from "./PaymentPanel";
@@ -21,7 +23,22 @@ export function CartDrawer({
   const [, setRefresh] = useState(0);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [payment, setPayment] = useState<PaymentInfo | null>(null);
+  const [adminFee, setAdminFee] = useState(DEFAULT_ADMIN_FEE);
   const cart: CartItem[] = open ? getCart() : [];
+
+  // Ambil fee terbaru yang diatur admin setiap keranjang dibuka.
+  useEffect(() => {
+    if (!open) return;
+
+    let cancelled = false;
+    getStoreSettings().then((settings) => {
+      if (!cancelled) setAdminFee(settings.admin_fee);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [open]);
 
   const handleClose = () => {
     setCheckoutOpen(false);
@@ -66,7 +83,7 @@ export function CartDrawer({
   }, 0);
 
   const totalSavings = subtotalOriginal - subtotalPromo;
-  const adminFee = 5000;
+  // Fee hanya untuk tampilan. Fee yang ditagih ditentukan create_order.
   const grandTotal = subtotalPromo + adminFee;
 
   const safeCart = cart.map((item, index) => ({
@@ -77,8 +94,9 @@ export function CartDrawer({
   const generateWhatsAppMessage = (
     checkoutCart: CartItem[],
     checkout: CheckoutDetails,
-    orderId: number,
+    order: { id: number; total: number; adminFee: number },
   ) => {
+    const orderId = order.id;
     const itemsByBrand = checkoutCart.reduce<Record<string, CartItem[]>>(
       (grouped, item) => {
         const brand = item.brand || "others";
@@ -93,8 +111,6 @@ export function CartDrawer({
     text += `🆔 *No. Pesanan:* #${orderId}\n`;
     text += `👤 *Nama:* ${checkout.name}\n`;
     text += `📱 *No. HP:* ${toLocalPhone(checkout.phone)}\n\n`;
-
-    let orderSubtotal = 0;
 
     Object.entries(itemsByBrand).forEach(([brandKey, items]) => {
       const brand = brands.find((item) => item.id === brandKey);
@@ -120,8 +136,6 @@ export function CartDrawer({
         const itemSubtotal = unitPrice * item.qty;
         const discount = item.price.original - item.price.selling;
 
-        orderSubtotal += itemSubtotal;
-
         text += `• ${item.name} x${item.qty}\n`;
         if (optionText) text += `  ${optionText}\n`;
         text += `  Harga: Rp ${unitPrice.toLocaleString("id-ID")}\n`;
@@ -132,11 +146,11 @@ export function CartDrawer({
       });
     });
 
-    const checkoutTotal = orderSubtotal + adminFee;
+    // Ringkasan memakai angka dari database agar sama dengan nominal QRIS.
     text += `━━━━━━━━━━━━━━━━━━\n`;
-    text += `Subtotal: Rp ${orderSubtotal.toLocaleString("id-ID")}\n`;
-    text += `Fee admin: Rp ${adminFee.toLocaleString("id-ID")}\n`;
-    text += `💰 *TOTAL BAYAR: Rp ${checkoutTotal.toLocaleString("id-ID")}*\n\n`;
+    text += `Subtotal: Rp ${(order.total - order.adminFee).toLocaleString("id-ID")}\n`;
+    text += `Fee admin: Rp ${order.adminFee.toLocaleString("id-ID")}\n`;
+    text += `💰 *TOTAL BAYAR: Rp ${order.total.toLocaleString("id-ID")}*\n\n`;
     text += `━━━━━━━━━━━━━━━━━━\n\n`;
     text += `📌 *Catatan:*\n`;
     text += `1. Tunggu QR pengambilan\n`;
@@ -147,15 +161,19 @@ export function CartDrawer({
   };
 
   const handleCheckout = async (details: CheckoutDetails) => {
-    const { orderId, total } = await createOrder({
+    const { orderId, total, adminFee: chargedFee } = await createOrder({
       name: details.name,
       phone: details.phone,
       items: cart,
       outlets: details.outlets,
     });
 
-    const message = generateWhatsAppMessage(cart, details, orderId);
-    const phone = "6281586298430";
+    const message = generateWhatsAppMessage(cart, details, {
+      id: orderId,
+      total,
+      adminFee: chargedFee ?? adminFee,
+    });
+    const phone = ADMIN_WHATSAPP;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
 
     // Pesanan sudah tercatat, jadi keranjang dikosongkan agar tidak
