@@ -14,6 +14,10 @@ import Image from "next/image";
 import { BrandSelector } from "./components/BrandSelector";
 import { CartDrawer } from "./components/CardDrawer";
 import { OrderHistoryDrawer } from "./components/OrderHistoryDrawer";
+import {
+  ORDERS_UPDATE_EVENT,
+  getRememberedOrderCount,
+} from "./lib/orderHistory";
 import { ProductSection } from "./components/ProductSection";
 import { BrandKey } from "./types/products";
 
@@ -26,6 +30,9 @@ export default function Home() {
   const [brand, setBrand] = useState<BrandKey>("fore");
   const [openCart, setOpenCart] = useState(false);
   const [openHistory, setOpenHistory] = useState(false);
+  const [orderCount, setOrderCount] = useState(() =>
+    typeof window === "undefined" ? 0 : getRememberedOrderCount(),
+  );
   const [cartCount, setCartCount] = useState(() => {
     if (typeof window === "undefined") return 0;
 
@@ -45,6 +52,13 @@ export default function Home() {
 
     window.addEventListener("cart:update", handler);
     return () => window.removeEventListener("cart:update", handler);
+  }, []);
+
+  useEffect(() => {
+    const handler = () => setOrderCount(getRememberedOrderCount());
+
+    window.addEventListener(ORDERS_UPDATE_EVENT, handler);
+    return () => window.removeEventListener(ORDERS_UPDATE_EVENT, handler);
   }, []);
 
   return (
@@ -71,10 +85,11 @@ export default function Home() {
           <button
             type="button"
             onClick={() => setOpenHistory(true)}
-            className="grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-screen"
+            className="relative grid size-11 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-screen"
             aria-label="Riwayat transaksi"
           >
             <ReceiptText size={20} strokeWidth={1.8} />
+            <CartBadge count={orderCount} />
           </button>
 
           <button
@@ -182,7 +197,10 @@ export default function Home() {
           className="grid size-12 place-items-center rounded-full text-secondary transition hover:bg-surface-alt hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           aria-label="Riwayat transaksi"
         >
-          <ReceiptText size={22} strokeWidth={1.7} />
+          <span className="relative">
+            <ReceiptText size={22} strokeWidth={1.7} />
+            <CartBadge count={orderCount} />
+          </span>
         </button>
 
         <button

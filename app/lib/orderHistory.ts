@@ -29,6 +29,8 @@ export type CustomerOrder = {
 type StoredOrder = { id: number; token: string };
 
 const STORAGE_KEY = "promoin_orders";
+/** Dikirim setiap ada pesanan baru tersimpan, seperti "cart:update". */
+export const ORDERS_UPDATE_EVENT = "orders:update";
 // Sama dengan batas token di get_customer_orders.
 const MAX_ORDERS = 50;
 
@@ -63,9 +65,15 @@ export function rememberOrder(order: StoredOrder) {
     ].slice(0, MAX_ORDERS);
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+    window.dispatchEvent(new Event(ORDERS_UPDATE_EVENT));
   } catch (error) {
     console.warn("Riwayat pesanan gagal disimpan:", error);
   }
+}
+
+/** Jumlah pesanan yang tersimpan di perangkat ini, untuk badge menu Riwayat. */
+export function getRememberedOrderCount() {
+  return readStoredOrders().length;
 }
 
 /** Mengambil status terbaru pesanan yang pernah dibuat di perangkat ini. */
